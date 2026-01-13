@@ -1,5 +1,5 @@
 # Rate My Professor: Statistical Analysis with Linear Regression & Regularisation
 
-A comprehensive statistical analysis of professor ratings from RateMyProfessor.com, applying advanced techniques including Bayesian shrinkage estimation, non-parametric hypothesis testing, and Lasso regularisation.
+A comprehensive statistical analysis of professor ratings from RateMyProfessor.com, applying advanced techniques including Bayesian shrinkage estimation, non-parametric hypothesis testing, and Lasso regularisation to predict the Average Ratings for a professor using Linear Regression.
 
 **[📊 View the complete analysis here](https://rutuja-jadhav-github.github.io/rate-my-professor-regression-regularisation-analysis-nyu-cds/notebooks/RateMyProf_Analysis.html)**
