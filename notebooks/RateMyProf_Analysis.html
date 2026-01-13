@@ -1,0 +1,3261 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Rate My Professor Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="RateMyProf_Analysis_files/libs/clipboard/clipboard.min.js"></script>
+<script src="RateMyProf_Analysis_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="RateMyProf_Analysis_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="RateMyProf_Analysis_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="RateMyProf_Analysis_files/libs/quarto-html/popper.min.js"></script>
+<script src="RateMyProf_Analysis_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="RateMyProf_Analysis_files/libs/quarto-html/anchor.min.js"></script>
+<link href="RateMyProf_Analysis_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="RateMyProf_Analysis_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="RateMyProf_Analysis_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="RateMyProf_Analysis_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="RateMyProf_Analysis_files/libs/bootstrap/bootstrap-a74871fe4945b66d259aafc266475145.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+  <li><a href="#about-this-project" id="toc-about-this-project" class="nav-link active" data-scroll-target="#about-this-project">About this Project</a></li>
+  <li><a href="#chapter-1-introducing-the-dataset" id="toc-chapter-1-introducing-the-dataset" class="nav-link" data-scroll-target="#chapter-1-introducing-the-dataset">Chapter 1: Introducing the Dataset</a>
+  <ul class="collapse">
+  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning">1.1. Data cleaning</a></li>
+  <li><a href="#null-values" id="toc-null-values" class="nav-link" data-scroll-target="#null-values">1.2. Null Values</a></li>
+  </ul></li>
+  <li><a href="#chapter-2-eda---not-all-averages-are-created-equal" id="toc-chapter-2-eda---not-all-averages-are-created-equal" class="nav-link" data-scroll-target="#chapter-2-eda---not-all-averages-are-created-equal">Chapter 2: EDA - Not all Averages are created Equal</a>
+  <ul class="collapse">
+  <li><a href="#why-the-skew-a-cardinal-problem" id="toc-why-the-skew-a-cardinal-problem" class="nav-link" data-scroll-target="#why-the-skew-a-cardinal-problem">2.1. Why the Skew? A ‘Cardinal’ Problem</a></li>
+  <li><a href="#could-the-average-ratings-be-skewed-due-to-selection-bias" id="toc-could-the-average-ratings-be-skewed-due-to-selection-bias" class="nav-link" data-scroll-target="#could-the-average-ratings-be-skewed-due-to-selection-bias">2.2. Could the Average Ratings be skewed due to Selection Bias?</a></li>
+  <li><a href="#does-more-data-fix-the-skew" id="toc-does-more-data-fix-the-skew" class="nav-link" data-scroll-target="#does-more-data-fix-the-skew">2.3. Does More Data Fix the Skew?</a></li>
+  <li><a href="#in-summary-the-real-problem" id="toc-in-summary-the-real-problem" class="nav-link" data-scroll-target="#in-summary-the-real-problem">2.4. In Summary: The Real Problem</a></li>
+  <li><a href="#not-all-averages-are-created-equal" id="toc-not-all-averages-are-created-equal" class="nav-link" data-scroll-target="#not-all-averages-are-created-equal">2.5. Not all Averages are created Equal</a></li>
+  <li><a href="#bayesian-shrinkage-adjustment-for-professor-ratings" id="toc-bayesian-shrinkage-adjustment-for-professor-ratings" class="nav-link" data-scroll-target="#bayesian-shrinkage-adjustment-for-professor-ratings">2.6. Bayesian Shrinkage Adjustment for Professor Ratings</a></li>
+  <li><a href="#computing-the-bayesian-adjusted-average-ratings" id="toc-computing-the-bayesian-adjusted-average-ratings" class="nav-link" data-scroll-target="#computing-the-bayesian-adjusted-average-ratings">2.7. Computing the Bayesian-adjusted Average Ratings</a></li>
+  <li><a href="#what-bayesian-shrinkage-accomplished" id="toc-what-bayesian-shrinkage-accomplished" class="nav-link" data-scroll-target="#what-bayesian-shrinkage-accomplished">2.8. What Bayesian Shrinkage Accomplished</a></li>
+  </ul></li>
+  <li><a href="#chapters-3-non-parametric-hypothesis-testing" id="toc-chapters-3-non-parametric-hypothesis-testing" class="nav-link" data-scroll-target="#chapters-3-non-parametric-hypothesis-testing">Chapters 3: Non Parametric Hypothesis Testing</a>
+  <ul class="collapse">
+  <li><a href="#objective-ho-and-ha" id="toc-objective-ho-and-ha" class="nav-link" data-scroll-target="#objective-ho-and-ha">3.1. Objective, Ho, and Ha</a></li>
+  <li><a href="#preparing-the-dataset" id="toc-preparing-the-dataset" class="nav-link" data-scroll-target="#preparing-the-dataset">3.2. Preparing the dataset</a></li>
+  <li><a href="#choosing-an-appropriate-statistical-test" id="toc-choosing-an-appropriate-statistical-test" class="nav-link" data-scroll-target="#choosing-an-appropriate-statistical-test">3.3. Choosing an appropriate statistical test</a></li>
+  <li><a href="#results-of-the-non-parametric-tests" id="toc-results-of-the-non-parametric-tests" class="nav-link" data-scroll-target="#results-of-the-non-parametric-tests">3.4. Results of the non-parametric tests</a></li>
+  <li><a href="#addressing-sample-size-concerns" id="toc-addressing-sample-size-concerns" class="nav-link" data-scroll-target="#addressing-sample-size-concerns">3.5. Addressing Sample Size Concerns</a></li>
+  <li><a href="#contxtualising-significance-effect-size-and-confidence-interval" id="toc-contxtualising-significance-effect-size-and-confidence-interval" class="nav-link" data-scroll-target="#contxtualising-significance-effect-size-and-confidence-interval">3.6. Contxtualising Significance: Effect Size and Confidence Interval</a></li>
+  </ul></li>
+  <li><a href="#chapter-4-linear-rgression" id="toc-chapter-4-linear-rgression" class="nav-link" data-scroll-target="#chapter-4-linear-rgression">Chapter 4: Linear Rgression</a>
+  <ul class="collapse">
+  <li><a href="#objective-and-data-prep" id="toc-objective-and-data-prep" class="nav-link" data-scroll-target="#objective-and-data-prep">4.1. Objective and Data Prep</a></li>
+  <li><a href="#pre-regression-eda" id="toc-pre-regression-eda" class="nav-link" data-scroll-target="#pre-regression-eda">4.2. Pre-regression EDA</a></li>
+  <li><a href="#regression-assumptions-i" id="toc-regression-assumptions-i" class="nav-link" data-scroll-target="#regression-assumptions-i">4.3. Regression Assumptions I</a></li>
+  <li><a href="#regularization-and-model-fit-addressing-sparsity-and-dimensionality" id="toc-regularization-and-model-fit-addressing-sparsity-and-dimensionality" class="nav-link" data-scroll-target="#regularization-and-model-fit-addressing-sparsity-and-dimensionality">4.4. Regularization and Model Fit: Addressing Sparsity and Dimensionality</a></li>
+  <li><a href="#lasso-regression-methodology-and-results" id="toc-lasso-regression-methodology-and-results" class="nav-link" data-scroll-target="#lasso-regression-methodology-and-results">4.5. Lasso Regression: Methodology and Results</a></li>
+  <li><a href="#model-performance" id="toc-model-performance" class="nav-link" data-scroll-target="#model-performance">4.6. Model Performance</a></li>
+  <li><a href="#what-actually-predicts-higher-ratings" id="toc-what-actually-predicts-higher-ratings" class="nav-link" data-scroll-target="#what-actually-predicts-higher-ratings">4.7. What Actually Predicts Higher Ratings?</a></li>
+  <li><a href="#regression-assumptions-ii" id="toc-regression-assumptions-ii" class="nav-link" data-scroll-target="#regression-assumptions-ii">4.8. Regression Assumptions II</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Rate My Professor Analysis</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Author:</strong> Rutuja Jadhav | <strong>Published:</strong> Dec 2025<br>
+🌐 <a href="https://rutujajadhavmail2.wixsite.com/rutujajadhav/projects">Website</a> | 💼 <a href="https://www.linkedin.com/in/rutuja-jadhav-b96b2aa7/">LinkedIn</a> | 🐱 <a href="https://github.com/rutuja-d-jadhav">GitHub</a></p>
+<section id="about-this-project" class="level1">
+<h1>About this Project</h1>
+<p>This analysis was developed as part of my capstone project for the DSGA1001 course on the MS in Data Science program at NYU’s Courant Institute of Mathematics, Computing and Data Science. The original submission is a comprehensive investigation into patterns behind professor ratings on a website called Rate My Professor (where my own DS Prof happens to have a stellar rating, might I add) . We were provided a bunch of data sets pulled from the website and a set of research questions to explore.</p>
+<section id="what-youll-find-here" class="level3">
+<h3 class="anchored" data-anchor-id="what-youll-find-here">What you’ll find here</h3>
+<p>Rather than presenting the entire capstone (which is quite lengthy and probably still being used to assess the newer cohorts), I have curated only the most interesting methodologies to showcase my analytical approach and key learnings.</p>
+<p>While the findings themselves might not revolutionize how we think about professor ratings, this project showcases something I value more: <strong>methodological rigor when the data doesn’t cooperate</strong>.</p>
+<p>Real-world data is messy. This analysis forced me to navigate: - <strong>Sparse data challenges</strong> — working with limited tags in certain categories - <strong>Non-standard distributions</strong> — when your data violates assumptions, you adapt - <strong>Edge cases</strong> — bending traditional techniques when textbook approaches fall short</p>
+<p><strong>The focus here isn’t groundbreaking discoveries</strong> — it’s demonstrating how the course taught me to think through analytical obstacles. How do you extract reliable insights when the data isn’t perfect? When do you choose a non-parametric test over the standard approach? How do you communicate uncertainty honestly while still providing value and defending your choices?</p>
+<p>These are the skills that matter in real data science work, and that’s what I want to highlight in this portfolio piece.</p>
+</section>
+<section id="research-questions-covered-in-this-presentation" class="level3">
+<h3 class="anchored" data-anchor-id="research-questions-covered-in-this-presentation">Research questions covered in this presentation</h3>
+<ul>
+<li><p><strong>Preliminary data expolration + advanced data transformation</strong> Introducing the datasets with some basic hygiene checks such as shape, size and type of data. This is followed by two advanced transformations, namely <strong>Bayesian Shrinakge (chapter 2), and Feature transformation from numerical to binary (chapter 4).</strong></p></li>
+<li><p><strong>Non Parametric Hypothesis Testing</strong> Is there is a gender bias between the average professor ratings of male and female professors? Contextualising the results with <strong>effect sizes and confidence interval with bootstrapping</strong> to determine practical significance.</p></li>
+<li><p><strong>Linear Regression Modelling with Lasso Regularisation</strong> Predicting a professor’s average rating based on certain behavioural features available in the dataset and validating the various assumptions for linear regression.</p></li>
+</ul>
+</section>
+</section>
+<section id="chapter-1-introducing-the-dataset" class="level1">
+<h1>Chapter 1: Introducing the Dataset</h1>
+<p>Out of all the data provided to us from Rate My Professor, two .csv files were used for the analysis presented in this post.</p>
+<p>The first file contained more definitive information which is available for all professors on RMP - i.,e average rating, average difficulty, gender, number of ratings, etc.</p>
+<p>The second file contained behavioural tags which the students mark a professor with - this is optional and students can choose atmost 3 tags (out of 20) for any given professor. Examples of tags include - ‘inspirational’, ‘tough grader’, ‘respected’. etc.</p>
+<section id="data-cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="data-cleaning">1.1. Data cleaning</h2>
+<p>Both the dataframes had 89,892 rows where rach row represents the data associated with a single professor.</p>
+<p>At this stage the column labels in the raw data were ambiguous so I re-lablled these based on the information provided to us in the spec sheet in class.</p>
+<p>Then I merged both the dataframes into a single object to simplify further analysis.</p>
+<div id="7fe7984c" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="8f793642" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the datasets</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>av_ratings_df  <span class="op">=</span> pd.read_csv(<span class="st">"../rmpCapstoneNum.csv"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df_tags <span class="op">=</span> pd.read_csv(<span class="st">"../rmpCapstoneTags.csv"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(av_ratings_df.shape)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Unformatted file containing with ambiguous column names numerical data - firs column '5' shows average ratings"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>av_ratings_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(89892, 8)
+Unformatted file containing with ambiguous column names numerical data - firs column '5' shows average ratings</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">5</th>
+<th data-quarto-table-cell-role="th">1.5</th>
+<th data-quarto-table-cell-role="th">2</th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">0.1</th>
+<th data-quarto-table-cell-role="th">0.2</th>
+<th data-quarto-table-cell-role="th">1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>3.2</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3.6</td>
+<td>3.5</td>
+<td>10.0</td>
+<td>1.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1.0</td>
+<td>5.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3.5</td>
+<td>3.3</td>
+<td>22.0</td>
+<td>0.0</td>
+<td>56.0</td>
+<td>7.0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="e8b8a469" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_tags.shape)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_tags.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(89892, 20)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">0</th>
+<th data-quarto-table-cell-role="th">0.1</th>
+<th data-quarto-table-cell-role="th">0.2</th>
+<th data-quarto-table-cell-role="th">0.3</th>
+<th data-quarto-table-cell-role="th">0.4</th>
+<th data-quarto-table-cell-role="th">1</th>
+<th data-quarto-table-cell-role="th">0.5</th>
+<th data-quarto-table-cell-role="th">0.6</th>
+<th data-quarto-table-cell-role="th">0.7</th>
+<th data-quarto-table-cell-role="th">0.8</th>
+<th data-quarto-table-cell-role="th">0.9</th>
+<th data-quarto-table-cell-role="th">0.10</th>
+<th data-quarto-table-cell-role="th">0.11</th>
+<th data-quarto-table-cell-role="th">0.12</th>
+<th data-quarto-table-cell-role="th">0.13</th>
+<th data-quarto-table-cell-role="th">0.14</th>
+<th data-quarto-table-cell-role="th">0.15</th>
+<th data-quarto-table-cell-role="th">0.16</th>
+<th data-quarto-table-cell-role="th">0.17</th>
+<th data-quarto-table-cell-role="th">1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>6</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>8</td>
+<td>13</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>7</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="0de4c5be" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>av_ratings_df.columns <span class="op">=</span> [</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Average Rating"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Average Difficulty"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Number of ratings"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hot or Not"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Take class again"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Online class ratings"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Male"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Female"</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display head only</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>av_ratings_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="5a872872" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge by concatenating columns</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> pd.concat([av_ratings_df, tags_df], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the result</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(merged_df.shape)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st"> Merged and re-labelled dataframe for analysis"</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>merged_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(89892, 28)
+
+ Merged and re-labelled dataframe for analysis</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Average Rating</th>
+<th data-quarto-table-cell-role="th">Average Difficulty</th>
+<th data-quarto-table-cell-role="th">Number of ratings</th>
+<th data-quarto-table-cell-role="th">Hot or Not</th>
+<th data-quarto-table-cell-role="th">Take class again</th>
+<th data-quarto-table-cell-role="th">Online class ratings</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Tough grader</th>
+<th data-quarto-table-cell-role="th">Good feedback</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">So many papers</th>
+<th data-quarto-table-cell-role="th">Clear grading</th>
+<th data-quarto-table-cell-role="th">Hilarious</th>
+<th data-quarto-table-cell-role="th">Test heavy</th>
+<th data-quarto-table-cell-role="th">Graded by few things</th>
+<th data-quarto-table-cell-role="th">Amazing lectures</th>
+<th data-quarto-table-cell-role="th">Caring</th>
+<th data-quarto-table-cell-role="th">Extra credit</th>
+<th data-quarto-table-cell-role="th">Group projects</th>
+<th data-quarto-table-cell-role="th">Lecture heavy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>3.2</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3.6</td>
+<td>3.5</td>
+<td>10.0</td>
+<td>1.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>3</td>
+<td>...</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>1.0</td>
+<td>5.0</td>
+<td>1.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>3.5</td>
+<td>3.3</td>
+<td>22.0</td>
+<td>0.0</td>
+<td>56.0</td>
+<td>7.0</td>
+<td>1</td>
+<td>0</td>
+<td>8</td>
+<td>13</td>
+<td>...</td>
+<td>0</td>
+<td>7</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 28 columns</p>
+</div>
+</div>
+</div>
+<div id="7ceca260" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>merged_df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Average Rating</th>
+<th data-quarto-table-cell-role="th">Average Difficulty</th>
+<th data-quarto-table-cell-role="th">Number of ratings</th>
+<th data-quarto-table-cell-role="th">Hot or Not</th>
+<th data-quarto-table-cell-role="th">Take class again</th>
+<th data-quarto-table-cell-role="th">Online class ratings</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Tough grader</th>
+<th data-quarto-table-cell-role="th">Good feedback</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">So many papers</th>
+<th data-quarto-table-cell-role="th">Clear grading</th>
+<th data-quarto-table-cell-role="th">Hilarious</th>
+<th data-quarto-table-cell-role="th">Test heavy</th>
+<th data-quarto-table-cell-role="th">Graded by few things</th>
+<th data-quarto-table-cell-role="th">Amazing lectures</th>
+<th data-quarto-table-cell-role="th">Caring</th>
+<th data-quarto-table-cell-role="th">Extra credit</th>
+<th data-quarto-table-cell-role="th">Group projects</th>
+<th data-quarto-table-cell-role="th">Lecture heavy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">count</th>
+<td>70003.000000</td>
+<td>70003.000000</td>
+<td>70003.000000</td>
+<td>70003.000000</td>
+<td>12160.000000</td>
+<td>70003.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>...</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+<td>89892.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">mean</th>
+<td>3.807997</td>
+<td>2.864643</td>
+<td>5.374770</td>
+<td>0.279931</td>
+<td>76.417105</td>
+<td>0.315615</td>
+<td>0.326792</td>
+<td>0.301896</td>
+<td>0.753771</td>
+<td>1.004617</td>
+<td>...</td>
+<td>0.112969</td>
+<td>0.550794</td>
+<td>0.498732</td>
+<td>0.126196</td>
+<td>0.118142</td>
+<td>0.483769</td>
+<td>0.855738</td>
+<td>0.402672</td>
+<td>0.204201</td>
+<td>0.394918</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">std</th>
+<td>1.126894</td>
+<td>0.991057</td>
+<td>8.136676</td>
+<td>0.448968</td>
+<td>25.011441</td>
+<td>1.054735</td>
+<td>0.469043</td>
+<td>0.459083</td>
+<td>1.985597</td>
+<td>2.485242</td>
+<td>...</td>
+<td>0.550806</td>
+<td>1.464692</td>
+<td>2.063500</td>
+<td>0.693773</td>
+<td>0.501118</td>
+<td>1.807557</td>
+<td>2.158979</td>
+<td>1.660904</td>
+<td>0.949807</td>
+<td>1.189550</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">min</th>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>4.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">25%</th>
+<td>3.000000</td>
+<td>2.000000</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>60.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">50%</th>
+<td>4.000000</td>
+<td>3.000000</td>
+<td>3.000000</td>
+<td>0.000000</td>
+<td>83.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">75%</th>
+<td>4.800000</td>
+<td>3.500000</td>
+<td>6.000000</td>
+<td>1.000000</td>
+<td>100.000000</td>
+<td>0.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>...</td>
+<td>0.000000</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>1.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+<td>0.000000</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">max</th>
+<td>5.000000</td>
+<td>5.000000</td>
+<td>393.000000</td>
+<td>1.000000</td>
+<td>100.000000</td>
+<td>19.000000</td>
+<td>1.000000</td>
+<td>1.000000</td>
+<td>112.000000</td>
+<td>171.000000</td>
+<td>...</td>
+<td>64.000000</td>
+<td>77.000000</td>
+<td>224.000000</td>
+<td>81.000000</td>
+<td>39.000000</td>
+<td>136.000000</td>
+<td>127.000000</td>
+<td>128.000000</td>
+<td>92.000000</td>
+<td>38.000000</td>
+</tr>
+</tbody>
+</table>
+
+<p>8 rows × 28 columns</p>
+</div>
+</div>
+</div>
+<div id="345ea4e4" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>merged_df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
+RangeIndex: 89892 entries, 0 to 89891
+Data columns (total 28 columns):
+ #   Column                                 Non-Null Count  Dtype  
+---  ------                                 --------------  -----  
+ 0   Average Rating                         70003 non-null  float64
+ 1   Average Difficulty                     70003 non-null  float64
+ 2   Number of ratings                      70003 non-null  float64
+ 3   Hot or Not                             70003 non-null  float64
+ 4   Take class again                       12160 non-null  float64
+ 5   Online class ratings                   70003 non-null  float64
+ 6   Male                                   89892 non-null  int64  
+ 7   Female                                 89892 non-null  int64  
+ 8   Tough grader                           89892 non-null  int64  
+ 9   Good feedback                          89892 non-null  int64  
+ 10  Respected                              89892 non-null  int64  
+ 11  Lots to read                           89892 non-null  int64  
+ 12  Participation matters                  89892 non-null  int64  
+ 13  Don’t skip class or you will not pass  89892 non-null  int64  
+ 14  Lots of homework                       89892 non-null  int64  
+ 15  Inspirational                          89892 non-null  int64  
+ 16  Pop quizzes!                           89892 non-null  int64  
+ 17  Accessible                             89892 non-null  int64  
+ 18  So many papers                         89892 non-null  int64  
+ 19  Clear grading                          89892 non-null  int64  
+ 20  Hilarious                              89892 non-null  int64  
+ 21  Test heavy                             89892 non-null  int64  
+ 22  Graded by few things                   89892 non-null  int64  
+ 23  Amazing lectures                       89892 non-null  int64  
+ 24  Caring                                 89892 non-null  int64  
+ 25  Extra credit                           89892 non-null  int64  
+ 26  Group projects                         89892 non-null  int64  
+ 27  Lecture heavy                          89892 non-null  int64  
+dtypes: float64(6), int64(22)
+memory usage: 19.2 MB</code></pre>
+</div>
+</div>
+</section>
+<section id="null-values" class="level2">
+<h2 class="anchored" data-anchor-id="null-values">1.2. Null Values</h2>
+<p>Out of approx. 89000 records, around 19000 rows were dropped because they lacked the variable of interest - average ratings. I avoided imputation as the missing values were not missing at random and imputing could introduce bias.</p>
+<div id="cdc6c5fb" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dont delete cell</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows without ratings data from merged_df (modifies in place)</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>merged_df.dropna(subset<span class="op">=</span>[<span class="st">'Average Rating'</span>, <span class="st">'Number of ratings'</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>merged_df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>(70003, 28)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="chapter-2-eda---not-all-averages-are-created-equal" class="level1">
+<h1>Chapter 2: EDA - Not all Averages are created Equal</h1>
+<section id="using-bayesian-shrinkage-to-improve-the-reliability-of-average-ratings." class="level3">
+<h3 class="anchored" data-anchor-id="using-bayesian-shrinkage-to-improve-the-reliability-of-average-ratings.">Using Bayesian Shrinkage to improve the reliability of Average Ratings.</h3>
+<p>The variable of interest for the research questions addressed in this presentation is Average Ratings.</p>
+<p>Each professor has an average rating between 1-5, given by some ‘N’ number of students (more on this later).</p>
+<p>At first glance, professor ratings seem overly generous. Half of all professors scored above 4.0 on a 5-point scale.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/RMP_org_ratings.png" class="img-fluid figure-img"></p>
+<figcaption>RMP original ratings</figcaption>
+</figure>
+</div>
+<p>Average ratings are bunched up near the top, with a long tail stretching toward the lower end - a classic left-skewed distribution.</p>
+</section>
+<section id="why-the-skew-a-cardinal-problem" class="level2">
+<h2 class="anchored" data-anchor-id="why-the-skew-a-cardinal-problem">2.1. Why the Skew? A ‘Cardinal’ Problem</h2>
+<p>Before we close in on the beef of our analysis(ie the hypothesis testing, regression, etc), we need to acknowledge something fundamental: <strong><em>Rating scales aren’t the most numerically accurate of all measurement instruments.</em></strong></p>
+<p>Ratings data is oblivious to one of the holy trinity of numerical properties - <strong><em>cardinality</em></strong> (it is largely ordinal and to some extent nominal as well).</p>
+<p>The psychological difference between a 3 and a 4 isn’t the same as between a 4 and a 5 in students’ minds (contrary to to the mathematical distance between the two pairs).</p>
+<p>This creates two structural issues:</p>
+<ul>
+<li><p><strong>Scale Psychology:</strong> Students don’t use the scale evenly. Some may mentally treat 5 = Excellent, 4 = Good/Acceptable, 3 = Disappointing (not “average”), 1-2 = Terrible whislt others may treat 5 = Excellent, 4 = Very Good, 3 = Average or Acceprable, 2= Terrible , 1= Do I even need to bother rating? The mathematical midpoint (3.0) becomes a psychological “failure,” for some and “neutrality” for others.</p></li>
+<li><p><strong>Ceiling effect:</strong> On a bounded 1-5 scale, there’s limited room at the top. A truly exceptional professor can’t score higher than 5, compressing all “great” professors into a narrow band. Whereas those with an average rating &lt; 4, have more room to spread out.</p></li>
+</ul>
+<p><strong><em>These aren’t data problems we can fix - they’re structural limitations of the rating scale itself.</em></strong></p>
+</section>
+<section id="could-the-average-ratings-be-skewed-due-to-selection-bias" class="level2">
+<h2 class="anchored" data-anchor-id="could-the-average-ratings-be-skewed-due-to-selection-bias">2.2. Could the Average Ratings be skewed due to Selection Bias?</h2>
+<p>Another afterthought: maybe only satisfied students bother rating, filtering out negative experiences entirely. If bad or unpopular professors simply don’t get rated, this dataset might only capture “survivors.”</p>
+<p>Let us check how many students typically rate each professor:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/AvNumReviews.png" class="img-fluid figure-img"></p>
+<figcaption>AvNumReviews</figcaption>
+</figure>
+</div>
+<p><strong>On average, professors were rated by 5 students (std deviation = 8)</strong></p>
+<p>Half the profs have been rated by only 3 students (the median). The interquartile range for ‘Number of Ratings’ sits around 6-10 ratings per professor. This is universally sparse.</p>
+<p>But here’s what’s interesting: when run a medial split professors by average rating, both groups look somewhat identical:</p>
+<p><strong>-Professors with Average Rating &gt; 4:</strong></p>
+<p>Mean number of ratings: 5.7</p>
+<p>Median number of ratings: 3.0</p>
+<p><strong>-Professors with Average Rating ≤ 4:</strong></p>
+<p>Mean number of ratings: 5.1</p>
+<p>Median number of rating ratings: 3.0</p>
+<p><strong>This suggests low-ranked professors aren’t being ignored - they’re just as under-reviewed as everyone else</strong></p>
+<p>While some form of selection or surviorship bias may exist for the popular or tenure professors, but it’s not completely filtering out low-rated professors from the dataset. They’re here - they just have tiny, unreliable sample sizes.</p>
+</section>
+<section id="does-more-data-fix-the-skew" class="level2">
+<h2 class="anchored" data-anchor-id="does-more-data-fix-the-skew">2.3. Does More Data Fix the Skew?</h2>
+<p>I wondered: maybe the skew is just noise from small samples (small samples = less number of students rating a professor). What if we only look at professors with substantial rating histories?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/tripleReviewplots.png" class="img-fluid figure-img"></p>
+<figcaption>tripleReviewplots</figcaption>
+</figure>
+</div>
+<p>Not only does more data NOT FIX the skew, in fact, it <strong><em>enhances</em></strong> it with larger samples. But something else happens:</p>
+<p>n ≥ 10: Median rating = 4.0</p>
+<p>n ≥ 30: Median rating = 4.3</p>
+<p>n ≥ 100: Median rating = 4.6</p>
+<p>Professors with more ratings trend higher. This could mean:</p>
+<ul>
+<li><p>The median rating increases from 4 for all professors to 4.3–4.65 among those with more than 100 ratings, reflecting both reduced variability from larger sample sizes and the tendency for more widely taught or popular professors to accumulate more ratings. (This signals some level of mild selection/ surviorship bias filtering out the low-ranked professors. If low-rank professors were equally represented, the median wouldn’t rise as we increased n, it would shift left-ward).</p></li>
+<li><p>Despite this, however, the left-skewed shape persists, indicating that ceiling effects and asymmetric scale usage remain the primary drivers of the skew.</p></li>
+</ul>
+<p>But here’s the problem: only a handful of professors have 100+ ratings. The vast majority are stuck with 1-10 reviews - too few to be reliable.</p>
+</section>
+<section id="in-summary-the-real-problem" class="level2">
+<h2 class="anchored" data-anchor-id="in-summary-the-real-problem">2.4. In Summary: The Real Problem</h2>
+<p>We have two separate issues:</p>
+<p><strong>1. The skew</strong> - Ratings trend positive due to scale psychology, ceiling effects, and possibly mild selection bias</p>
+<p><strong>2. Unreliable sample sizes</strong> - The bulk of ratings are based on 5 reviews or fewer.</p>
+<p>We can’t fix issue #1 (it’s baked into how rating scales work). But we can fix issue #2!</p>
+</section>
+<section id="not-all-averages-are-created-equal" class="level2">
+<h2 class="anchored" data-anchor-id="not-all-averages-are-created-equal">2.5. Not all Averages are created Equal</h2>
+<p>Here’s a thought experiment: Would you trust a restaurant with a single 5-star review, or one with 500 reviews averaging 4.8?</p>
+<p>Hopefully you said the second one. Sample size matters.</p>
+<p>A professor with a single enthusiastic freshman can have a 5.0 average. A single disgruntled student can create a 1.0. With only 3 median reviews, average ratings are unstable.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/Ratingstability.png" class="img-fluid figure-img"></p>
+<figcaption>RatingStability</figcaption>
+</figure>
+</div>
+<p>Notice how ratings jump around wildly when sample sizes are small? The variance is extreme at the low end.</p>
+<p>Therefore average ratings for professors who were reviewed by a smaller number of students may not be the most representative of the entire population of students who took that professor’s class.</p>
+<p>As rule of thumb originating from the Central Limit Theorem and Law of Large numbers, we need typically require a sample size of n&gt;= 30 in order for any average to reliabily reflect the true population’s sentiment and reduce sampling variation.</p>
+</section>
+<section id="bayesian-shrinkage-adjustment-for-professor-ratings" class="level2">
+<h2 class="anchored" data-anchor-id="bayesian-shrinkage-adjustment-for-professor-ratings">2.6. Bayesian Shrinkage Adjustment for Professor Ratings</h2>
+<p>As seen in chapter 1, restricting the analysis to professors with many ratings would leave us to work with only a fraction of the dataset (example n&gt;30 gives only 992 profs). While those ratings are more reliable, such filtering risks amplifying the selection bias by overrepresenting popular professors. On the other hand, analysing ALL ratings based on reviews from a handful of students, introduces substantial sampling variability.</p>
+<p>To address this tradeoff, I applied a Bayesian shrinkage estimator to professor-level average ratings and difficulty scores. (Note - Let’s not get thrown off the guard with ‘Bayesian’ in that title. It just refelects an ‘update’. The ultimate approach of hypohtesis testing in subsequent chapters still remains very much Frquentist.)</p>
+<p>The purpose of the Bayesian shrinkage estimator is to stablise average ratings by shrinking noisy, low-sample averages toward a global mean, while leaving high-sample averages largely unchanged.</p>
+<p>Intuitively, a rating of 4.8 based on 5 students is pulled slightly downward toward the global mean, while a rating of 1.2 based on 5 students is pulled upward toward the same mean.</p>
+</section>
+<section id="computing-the-bayesian-adjusted-average-ratings" class="level2">
+<h2 class="anchored" data-anchor-id="computing-the-bayesian-adjusted-average-ratings">2.7. Computing the Bayesian-adjusted Average Ratings</h2>
+<p>The Bayesian-adjusted rating for professor <span class="math inline">\(i\)</span> is:</p>
+<p><span class="math display">\[
+\text{AdjustedRating}_i
+=
+\frac{n_i \, \bar{x}_i + k \, \mu}{n_i + k}
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\bar{x}_i\)</span> is the observed average rating (or difficulty) for professor <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(n_i\)</span> is the number of student ratings for professor <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(\mu\)</span> is the global mean rating</li>
+<li><span class="math inline">\(k\)</span> is the shrinkage parameter (here <span class="math inline">\(k = 5\)</span>, corresponding to light shrinkage)</li>
+</ul>
+<p>The global mean <span class="math inline">\(\mu\)</span> is computed as a rating-count–weighted average:</p>
+<p><span class="math display">\[
+\mu
+=
+\frac{\sum_i n_i \bar{x}_i}{\sum_i n_i}
+\]</span></p>
+<p>Tip - think of the global mean as what we computed in high school (average price of fruits = total price of all fruits/ total fruits sold)</p>
+<p>This estimator reduces noise from small-sample averages without excluding less frequently rated professors.</p>
+<p>Quick ask - if you are aware about any other rating tranformers which would me more efficient here, pls feel free to share.</p>
+<div id="08ce8625" class="cell" data-execution_count="16">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dont delete cell</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Steps to compute Bayesian-adjusted averages</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1 Filter merged_df for professors with more than 3 ratings (split by median number ratings)</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> merged_df[merged_df[<span class="st">"Number of ratings"</span>] <span class="op">&gt;</span> <span class="dv">3</span>].reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2 Weighted global mean for Average Rating</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>mu_rating <span class="op">=</span> (</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    filtered_df[<span class="st">"Average Rating"</span>] <span class="op">*</span> filtered_df[<span class="st">"Number of ratings"</span>]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>).<span class="bu">sum</span>() <span class="op">/</span> filtered_df[<span class="st">"Number of ratings"</span>].<span class="bu">sum</span>()</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 3 Weighted global mean for Average Difficulty</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>mu_difficulty <span class="op">=</span> (</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    filtered_df[<span class="st">"Average Difficulty"</span>] <span class="op">*</span> filtered_df[<span class="st">"Number of ratings"</span>]</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>).<span class="bu">sum</span>() <span class="op">/</span> filtered_df[<span class="st">"Number of ratings"</span>].<span class="bu">sum</span>()</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Weighted global mean rating:"</span>, <span class="bu">round</span>(mu_rating, <span class="dv">3</span>))</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Weighted global mean difficulty:"</span>, <span class="bu">round</span>(mu_difficulty, <span class="dv">3</span>))</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the result</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>filtered_df.head()</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>filtered_df.shape</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"31951 rows (out of approx 70K following initial data cleaning) </span><span class="ch">\n</span><span class="st"> were available with more than 3 reviews following the median split on reviews. </span><span class="ch">\n</span><span class="st"> Bayesian shrinkage was performed only for these."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Weighted global mean rating: 3.888
+Weighted global mean difficulty: 2.936
+31951 rows (out of approx 70K following initial data cleaning) 
+ were available with more than 3 reviews following the median split on reviews. 
+ Bayesian shrinkage was performed only for these.</code></pre>
+</div>
+</div>
+<div id="9e90c2e7" class="cell" data-execution_count="17">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dont delete cell . Bayesian-adjusted Average Rating</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Add column for Baye's adjusted Avg rating and compute it using the formula</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>filtered_df[<span class="st">"AvgRating_Bayes"</span>] <span class="op">=</span> (</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    filtered_df[<span class="st">"Average Rating"</span>] <span class="op">*</span> filtered_df[<span class="st">"Number of ratings"</span>]</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> mu_rating <span class="op">*</span> k</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>) <span class="op">/</span> (filtered_df[<span class="st">"Number of ratings"</span>] <span class="op">+</span> k)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Bayesian-adjusted Average Difficulty</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>filtered_df[<span class="st">"AvgDifficulty_Bayes"</span>] <span class="op">=</span> (</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    filtered_df[<span class="st">"Average Difficulty"</span>] <span class="op">*</span> filtered_df[<span class="st">"Number of ratings"</span>]</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> mu_difficulty <span class="op">*</span> k</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>) <span class="op">/</span> (filtered_df[<span class="st">"Number of ratings"</span>] <span class="op">+</span> k)</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>filtered_df[</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>    [<span class="st">"Average Rating"</span>, <span class="st">"AvgRating_Bayes"</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Average Difficulty"</span>, <span class="st">"AvgDifficulty_Bayes"</span>,</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Number of ratings"</span>]</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>].head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Average Rating</th>
+<th data-quarto-table-cell-role="th">AvgRating_Bayes</th>
+<th data-quarto-table-cell-role="th">Average Difficulty</th>
+<th data-quarto-table-cell-role="th">AvgDifficulty_Bayes</th>
+<th data-quarto-table-cell-role="th">Number of ratings</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>3.2</td>
+<td>3.582407</td>
+<td>3.0</td>
+<td>2.964181</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>3.6</td>
+<td>3.696111</td>
+<td>3.5</td>
+<td>3.311842</td>
+<td>10.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3.5</td>
+<td>3.571913</td>
+<td>3.3</td>
+<td>3.232505</td>
+<td>22.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2.6</td>
+<td>3.315740</td>
+<td>4.5</td>
+<td>3.630847</td>
+<td>4.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2.6</td>
+<td>3.029444</td>
+<td>4.1</td>
+<td>3.711842</td>
+<td>10.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>4.3</td>
+<td>4.201984</td>
+<td>3.3</td>
+<td>3.213220</td>
+<td>16.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>4.8</td>
+<td>4.293518</td>
+<td>2.5</td>
+<td>2.741959</td>
+<td>4.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">7</th>
+<td>4.1</td>
+<td>4.018590</td>
+<td>1.8</td>
+<td>2.236741</td>
+<td>8.0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">8</th>
+<td>2.2</td>
+<td>3.044166</td>
+<td>4.4</td>
+<td>3.667763</td>
+<td>5.0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>3.5</td>
+<td>3.577667</td>
+<td>3.2</td>
+<td>3.147105</td>
+<td>20.0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="what-bayesian-shrinkage-accomplished" class="level2">
+<h2 class="anchored" data-anchor-id="what-bayesian-shrinkage-accomplished">2.8. What Bayesian Shrinkage Accomplished</h2>
+<p>Note: Bayesian shrinkage was performed for profs who have atleast 3 reviews (median split by number of reviews) so as to be able to retain atelast half the data. So the profs analysed hence forth have reicevd aleast 3 reviews + adjusted with bayesian parameter.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/PostBayes.png" class="img-fluid figure-img"></p>
+<figcaption>PostBayes</figcaption>
+</figure>
+</div>
+<p>The adjustment pulled extreme ratings toward the global mean, creating more conservative and reliable estimates:</p>
+<p>-<strong>Central Tendency:</strong></p>
+<p>The <strong>median</strong> dropped slightly from 4.10 to 3.99, tempering the optimistic skew, i.e, in case there was any survivorship bias towards popular or tenured profs at all, this new median would adjust for that.</p>
+<p>The <strong>mean</strong> increased from 3.83 to 3.86, as low-sample outliers were regularized</p>
+<p>-<strong>Variance Reduction (The Key Win):</strong></p>
+<p>Standard deviation decreased from 0.969 to 0.574 - a 41% reduction This tighter distribution means ratings are now more stable and trustworthy</p>
+<p><strong>What This Means</strong></p>
+<p>Professors with tiny sample sizes (1-3 ratings) who previously had extreme scores (1.0 or 5.0) are now pulled toward the population average (~3.9). We’re no longer treating a single student’s opinion as gospel truth.</p>
+<p><strong>The trade-off</strong></p>
+<p>We’ve sacrificed some “extreme” ratings for reliability. A professor with one 5-star review no longer appears perfect - but that’s the point. With limited data, we should be skeptical, not certain. Bayesian shrinkage doesn’t tell us who the best professors are - it tells us who we can trust the ratings for. And that’s far more valuable for decision-making.</p>
+</section>
+</section>
+<section id="chapters-3-non-parametric-hypothesis-testing" class="level1">
+<h1>Chapters 3: Non Parametric Hypothesis Testing</h1>
+<section id="objective-ho-and-ha" class="level2">
+<h2 class="anchored" data-anchor-id="objective-ho-and-ha">3.1. Objective, Ho, and Ha</h2>
+<p>The next leg of the project asked us to investigate if there was significant differece in the average rating for male and female professors. More specifically, are male professors rated significantly higher than female professors? This gives us our Null and Alternate Hypothesis:</p>
+<p><strong>Ho</strong> : <em>Male professors on RMP ARE NOT rated significanlty higher than female professors</em></p>
+<p><strong>Ha</strong> : <em>Male professors on RMP ARE rated significanlty higher than female professors</em></p>
+</section>
+<section id="preparing-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="preparing-the-dataset">3.2. Preparing the dataset</h2>
+<p>Following the Bayesian shrinkage in Chp2, the latest dataframe (31,951 rows) includes all the variables required for this test, mainly - Baye’s Adjusted Average Ratings and count of Male and Female professors.</p>
+<p>However, a quick loook at the data, reveals that gender was not reported for all professors. While it was necessary to include these rows in the overall analysis of average ratings data in chp2 (we do not want to loose information about ratings when demographic information is not required), for this particular case, it was required that the analysis be performed only for records with known values for professor’s gender.</p>
+<p>Therefore, rows with unknown gender were dropped and this part of the analysis was performed on <em>23,281 records - Male (0): 53.53% and Female (1): 46.47%</em></p>
+<div id="2ee9e25d" class="cell" data-execution_count="19">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#drop missing gender data, retain rows where male and female values are not equal</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> filtered_df[filtered_df[<span class="st">'Male'</span>] <span class="op">!=</span> filtered_df[<span class="st">'Female'</span>]]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>filtered_df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>(23281, 30)</code></pre>
+</div>
+</div>
+<div id="7d947234" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a new feature Gender 1 = female, 0 = male</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>filtered_df[<span class="st">'Gender'</span>] <span class="op">=</span> filtered_df[<span class="st">'Female'</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>filtered_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Average Rating</th>
+<th data-quarto-table-cell-role="th">Average Difficulty</th>
+<th data-quarto-table-cell-role="th">Number of ratings</th>
+<th data-quarto-table-cell-role="th">Hot or Not</th>
+<th data-quarto-table-cell-role="th">Take class again</th>
+<th data-quarto-table-cell-role="th">Online class ratings</th>
+<th data-quarto-table-cell-role="th">Male</th>
+<th data-quarto-table-cell-role="th">Female</th>
+<th data-quarto-table-cell-role="th">Tough grader</th>
+<th data-quarto-table-cell-role="th">Good feedback</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">Test heavy</th>
+<th data-quarto-table-cell-role="th">Graded by few things</th>
+<th data-quarto-table-cell-role="th">Amazing lectures</th>
+<th data-quarto-table-cell-role="th">Caring</th>
+<th data-quarto-table-cell-role="th">Extra credit</th>
+<th data-quarto-table-cell-role="th">Group projects</th>
+<th data-quarto-table-cell-role="th">Lecture heavy</th>
+<th data-quarto-table-cell-role="th">AvgRating_Bayes</th>
+<th data-quarto-table-cell-role="th">AvgDifficulty_Bayes</th>
+<th data-quarto-table-cell-role="th">Gender</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>3.2</td>
+<td>3.0</td>
+<td>4.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3.582407</td>
+<td>2.964181</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>3.5</td>
+<td>3.3</td>
+<td>22.0</td>
+<td>0.0</td>
+<td>56.0</td>
+<td>7.0</td>
+<td>1</td>
+<td>0</td>
+<td>8</td>
+<td>13</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>3.571913</td>
+<td>3.232505</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2.6</td>
+<td>4.1</td>
+<td>10.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+<td>3</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>3.029444</td>
+<td>3.711842</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>4.3</td>
+<td>3.3</td>
+<td>16.0</td>
+<td>1.0</td>
+<td>83.0</td>
+<td>0.0</td>
+<td>0</td>
+<td>1</td>
+<td>6</td>
+<td>5</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>4.201984</td>
+<td>3.213220</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">7</th>
+<td>4.1</td>
+<td>1.8</td>
+<td>8.0</td>
+<td>0.0</td>
+<td>NaN</td>
+<td>0.0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>...</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4.018590</td>
+<td>2.236741</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 31 columns</p>
+</div>
+</div>
+</div>
+<div id="c654eb5c" class="cell" data-execution_count="21">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count of male and female</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>gender_counts <span class="op">=</span> filtered_df[<span class="st">'Gender'</span>].value_counts()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentages</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>gender_percentages <span class="op">=</span> filtered_df[<span class="st">'Gender'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Count:"</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Male (0): </span><span class="sc">{</span>gender_counts<span class="sc">.</span>get(<span class="dv">0</span>, <span class="dv">0</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Female (1): </span><span class="sc">{</span>gender_counts<span class="sc">.</span>get(<span class="dv">1</span>, <span class="dv">0</span>)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Percentage:"</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Male (0): </span><span class="sc">{</span>gender_percentages<span class="sc">.</span>get(<span class="dv">0</span>, <span class="dv">0</span>)<span class="sc">:.2f}</span><span class="ss">%"</span>)</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Female (1): </span><span class="sc">{</span>gender_percentages<span class="sc">.</span>get(<span class="dv">1</span>, <span class="dv">0</span>)<span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Count:
+Male (0): 12463
+Female (1): 10818
+
+Percentage:
+Male (0): 53.53%
+Female (1): 46.47%</code></pre>
+</div>
+</div>
+</section>
+<section id="choosing-an-appropriate-statistical-test" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-an-appropriate-statistical-test">3.3. Choosing an appropriate statistical test</h2>
+<ul>
+<li><strong>Parametric vs Non parametric tests</strong> Box plots of the average ratings for male and female professors show that the data is <strong>not normally distributed</strong> for either group, following in the footsteps of the original average ratings distribution seen in Chapter 2 (notable skew and mean not equal to median).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../images/MFBox.png" class="img-fluid figure-img"></p>
+<figcaption>MandFBoxPlot</figcaption>
+</figure>
+</div>
+<p>Regardless of the skew, our large sample size (n = 12463 M and 10818 F) could have easily generated relibale estimates of sample means for both groups to satisfy the Central Limit Theorem and justify parametric tests (CLT: with a large sample size, the sampling distribution of means approaches a normal distribution regardless of the underlyig distribution - the skew in our case).</p>
+<p>However, using a <strong>parametric test would involve comparing means of average ratings</strong> of two groups— a statistically and conceptually questionable approach. For instance, how does one even interpret the mean of means or average of averages?</p>
+<p><strong>Rating scales are inherently ordinal and subject to ceiling effects and psychological biases in how respondents use the scale.</strong> These characteristics <strong>render the mean a less appropriate summary statistic</strong> for groups.</p>
+<p>The <strong>median, which non-parametric tests utilize, provides a more robust and interpretable measure of central tendency for rating data</strong>, as it is less sensitive to extreme values and better captures the typical rating experience.</p>
+<section id="to-sum-it-up-non-normality-of-the-data-was-no-reason-to-opt-out-of-parametric-tests." class="level3">
+<h3 class="anchored" data-anchor-id="to-sum-it-up-non-normality-of-the-data-was-no-reason-to-opt-out-of-parametric-tests.">To sum it up, non-normality of the data was no reason to opt out of parametric tests.</h3>
+<p>In fact, <strong>given our large sample size for both groups, CLT would statistically permit the use of a t-test</strong>. However, the <strong>ordinal nature</strong> of ratings and <strong>interpretibility of median of average</strong> ratings (as opposed to mean of averages) makes non-parametric tests more phillosophically suitable for this analysis.</p>
+<p>Section 3.4 discusses the results obtained after comparing the medians using the Mann Whitney U test and distributions using Kolmogorov-Smirnov test.</p>
+</section>
+</section>
+<section id="results-of-the-non-parametric-tests" class="level2">
+<h2 class="anchored" data-anchor-id="results-of-the-non-parametric-tests">3.4. Results of the non-parametric tests</h2>
+<p><strong>Distribution and Central Tendency Comparisons</strong></p>
+<p>Let’s start by noting down some observed parameters and statistics:</p>
+<ul>
+<li><p><strong>Sample sizes:</strong></p>
+<p>Male (0)- 12463</p>
+<p>Female (1)- 10818</p></li>
+<li><p><strong>Group Medians:</strong></p>
+<p>Male (0)- 4.0583</p>
+<p>Female (1)- 4.0038</p></li>
+<li><p><em>Observed median difference (Male - Female): 0.0545</em></p></li>
+<li><p><strong>Spread:</strong></p>
+<p>Male (0)- Variance: 0.3099, Standard Deviation: 0.5567</p>
+<p>Female (1)- Variance: 0.3271, Standard Deviation: 0.5720</p>
+<p>Variance Ratio (Male/Female): 0.9472</p></li>
+</ul>
+<p>The median comparison tells us that 50% of males scored above 4.0583 and 50% of females scored above 4.0038.</p>
+<p>The <strong>gap between these two “middle points” of both groups is 0.0545</strong>, i.e., <em>The typical (or median) male professor (the one at the 50th percentile), is rated 0.0545 points higher than the median female professor or Male professors’ median rating exceeds female professors’ median rating by 0.0545 points.</em></p>
+<p>Now the <strong>question - is this difference merely due to chance</strong>, i.e, its typically expected, or is there a deeper, significant systemic process at play by virtue of which median avearge ratings for male professors is higher than that of female professors?</p>
+<ul>
+<li><p>To answer this, I first conducted a <strong>two-sample Kolmogorov-Smirnov</strong> test to determine whether the overall distributions of ratings differ between male and female professors. This test examines the entire empirical cumulative distribution functions (ECDFs) rather than focusing solely on a single parameter like the median. Here are the results of the KS test at <em>0.005 level</em> of significance: KS-statistic: 0.031459 <strong>p-value: 0.000021 (&lt; 0.005) =&gt; indicates significant difference in the distribution</strong> of average ratings for male vs female profs.</p></li>
+<li><p>I also performed a <strong>one-tailed Mann-Whitney U test</strong> to examine specifically if male professors receive higher median ratings than female professors. The result was <strong>statistically significant (U = 69,948,221.50, p &lt; 0.001, α = 0.005)</strong>.</p></li>
+<li><p>Interpreting the U statistic: The dataset for this analysis consisted of ~12,461 males and ~10,820 females. The MWU test evaluates all possible pairwise comparisons = 12,461 × 10,820 = 134,829,220, and tells us in how many of these the male professor had a higher rating. Thus, the statistic (U = 69,948,221.50) highlights that of all ~135 million possible pairs (one male, one female), in about 70 million of them, the male professor had a higher rating.</p></li>
+</ul>
+<section id="so-given-all-that-statistically-significant-evidence-we-have-gathered-above-can-we-conclude-that-male-professors-on-rmp-are-in-fact-rated-significantly-higher-than-female-professors" class="level3">
+<h3 class="anchored" data-anchor-id="so-given-all-that-statistically-significant-evidence-we-have-gathered-above-can-we-conclude-that-male-professors-on-rmp-are-in-fact-rated-significantly-higher-than-female-professors">So, given all that statistically significant evidence we have gathered above, can we conclude that male professors on RMP are, in fact, rated significantly higher than female professors?…</h3>
+</section>
+</section>
+<section id="addressing-sample-size-concerns" class="level2">
+<h2 class="anchored" data-anchor-id="addressing-sample-size-concerns">3.5. Addressing Sample Size Concerns</h2>
+<p>Now here’s where we need to pump the brakes a bit.</p>
+<p>With our <strong>massive sample size of 23,281 records</strong> (53.53% male, 46.47% female), we have to <strong>be careful about what “statistically significant” actually means</strong>. When you have this many observations, even tiny, practically meaningless differences can show up as statistically significant. The <strong>large sample inflates the U-statistic</strong>, making it easier to get a <strong>small p-value</strong>. So <strong>just because something is statistically detectable doesn’t mean it matters in the real world</strong>.</p>
+<p>Supporting this concern, our variance analysis shows the <strong>variance ratio between groups is 0.95</strong> —the spreads are nearly identical, suggesting these distributions look quite similar overall (even though the tests say theyre are statistically significantly different! ).</p>
+<ul>
+<li><strong>KEY TAKEAWAY</strong> This is probably the bit that both amazes and (slightly) annoys me about the classic null hypothesis testing framework. First, we need a large sample size to have confidence that our sample statistics reliably estimate the true population parameters. For parametric tests, this allows us to leverage the Central Limit Theorem (to comapare differences in means); for non-parametric tests like the Mann-Whitney U (which we used here), large samples ensure our rank-based estimates are stable and representative. <strong>Large samples increase statistical Power</strong>- our ability to detect real effects when they exist. This increased power is <strong>generally beneficial: </strong><em>if</em>** there’s a meaningful difference<strong>, we want to find it. But here’s the </strong>irony and the trade-off: as n gets sufficiently large, power becomes so high that we also detect trivial, practically meaningless differences** as statistically significant! The test becomes hypersensitive— picking up on noise and treating it as signal. With enough data, statistical significance becomes almost guaranteed, even for differences that don’t matter in the real world.</li>
+</ul>
+<section id="as-n-gets-sufficiently-large-power-becomes-so-high-that-we-also-detect-trivial-practically-meaningless-differences-as-statistically-significant" class="level3">
+<h3 class="anchored" data-anchor-id="as-n-gets-sufficiently-large-power-becomes-so-high-that-we-also-detect-trivial-practically-meaningless-differences-as-statistically-significant">As n gets sufficiently large, power becomes so high that we also detect trivial, practically meaningless differences as statistically significant!</h3>
+</section>
+</section>
+<section id="contxtualising-significance-effect-size-and-confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="contxtualising-significance-effect-size-and-confidence-interval">3.6. Contxtualising Significance: Effect Size and Confidence Interval</h2>
+<p>The risk of inflated test statistics make Effect Sizes and Confidence Intervals critical for interpreting what significance actually means, i.e., they help us distinguish between what is “statistically detectable” and what is “practicallly relevant/ important.”</p>
+<p>-<strong>Effect Size:</strong> For our case, I calculated the <strong>rank-biserial correlation</strong> (non parametric version of Cohen’s d for the MWU test) as the effect size. The result <strong>(r = 0.0376) is very small</strong> —it doesn’t even hit the 0.1, the threshold for what we’d call a “small” effect.</p>
+<p><strong>To put the 0.0545-point difference in perspective</strong>, on a typical 5-point rating scale, the usable range for differences in medians is 4 points (from 1 to 5). So 0.0545 ÷ 4 = 0.0136, or about 1.4% of the scale. Both groups are sitting right around 4 out of 5—essentially getting similarly positive evaluations. Yes, males are rated a bit higher, but we’re talking about a difference you’d barely notice.</p>
+<p>-<strong>Confidence Interval:</strong> While the <strong>effect size helps us characterize the magnitude of the effect, it doesn’t tell us how precise our estimate is</strong> or what range of values would be consistent with our data across repeated samples.</p>
+<p>I performed bootstrapping (10,000 iterations) to construct a 95% confidence interval for the median difference. The interval <strong>[0.0252, 0.0760]</strong> means that <strong>if we repeated this study 100 times, approximately 95 of those intervals would contain the true median difference</strong>. Honestly, that’s not absolute certainty—we could theoretically be in that unlucky 5% of samples where our interval missed the true value. If the true median difference were actually zero, there’s a small chance our sample happened to skew positive.</p>
+<p>However, the interval is <strong>entirely positive</strong> and bounded <strong>well away from zero (where zero indicates there is NO difference in medians between both the groups)</strong>, which makes it unlikely we’re in that 5%. The interval is also quite narrow (over 10K intereations!), indicating our estimate is precise—if we repeated this study, we’d consistently get median differences in this small range. Even at the upper bound (0.076 points), we’re still looking at less than 2% of the rating scale—hardly a game-changer.</p>
+<section id="bottom-line" class="level3">
+<h3 class="anchored" data-anchor-id="bottom-line">Bottom Line?</h3>
+<p><strong>Yes, male professors get statistically significantly higher ratings than female professors. But practically speaking, this difference is tiny</strong>. The effect size is very small (r = 0.0376), and we’re talking about a <strong>0.05-point gap on a 5-point scale</strong>. The confidence interval confirms this difference is real and consistently small across hypothetical replications. Both groups are rated around 4.0/5.0, which means gender really doesn’t seem to have much meaningful impact on how students evaluate their professors in this dataset.</p>
+<p><strong>Below is the code snippet for the Mann Whitney U-test. Please see the complete .ipynb file on the github repo of this project for the complete code for other statistics</strong></p>
+<div id="8e7e88d4" class="cell" data-execution_count="23">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mannwhitneyu</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate data by gender</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>male_ratings <span class="op">=</span> filtered_df[filtered_df[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="dv">0</span>][<span class="st">'AvgRating_Bayes'</span>]</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>female_ratings <span class="op">=</span> filtered_df[filtered_df[<span class="st">'Gender'</span>] <span class="op">==</span> <span class="dv">1</span>][<span class="st">'AvgRating_Bayes'</span>]</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform one-tailed Mann-Whitney U test</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="co"># alternative='greater' tests if male ratings are significantly higher than female ratings</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>statistic, p_value <span class="op">=</span> mannwhitneyu(male_ratings, female_ratings, alternative<span class="op">=</span><span class="st">'greater'</span>)</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate medians</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>male_median <span class="op">=</span> male_ratings.median()</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>female_median <span class="op">=</span> female_ratings.median()</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Display results</span></span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>alpha <span class="op">=</span> <span class="fl">0.005</span></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span>)</span>
+<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Mann-Whitney U Test: One-Tailed (Male &gt; Female)"</span>)</span>
+<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span>)</span>
+<span id="cb22-20"><a href="#cb22-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Sample sizes:"</span>)</span>
+<span id="cb22-21"><a href="#cb22-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Male (0): </span><span class="sc">{</span><span class="bu">len</span>(male_ratings)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-22"><a href="#cb22-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Female (1): </span><span class="sc">{</span><span class="bu">len</span>(female_ratings)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-23"><a href="#cb22-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Medians:"</span>)</span>
+<span id="cb22-24"><a href="#cb22-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Male (0): </span><span class="sc">{</span>male_median<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb22-25"><a href="#cb22-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Female (1): </span><span class="sc">{</span>female_median<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb22-26"><a href="#cb22-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Difference: </span><span class="sc">{</span>male_median <span class="op">-</span> female_median<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb22-27"><a href="#cb22-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Test Statistics:"</span>)</span>
+<span id="cb22-28"><a href="#cb22-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  U-statistic: </span><span class="sc">{</span>statistic<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb22-29"><a href="#cb22-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  p-value: </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb22-30"><a href="#cb22-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Alpha level: </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb22-31"><a href="#cb22-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Conclusion:"</span>)</span>
+<span id="cb22-32"><a href="#cb22-32" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&lt;</span> alpha:</span>
+<span id="cb22-33"><a href="#cb22-33" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  ✓ REJECT the null hypothesis (p = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss"> &lt; </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb22-34"><a href="#cb22-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  Male professors have significantly higher median ratings than female professors."</span>)</span>
+<span id="cb22-35"><a href="#cb22-35" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb22-36"><a href="#cb22-36" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  ✗ FAIL TO REJECT the null hypothesis (p = </span><span class="sc">{</span>p_value<span class="sc">:.6f}</span><span class="ss"> &gt;= </span><span class="sc">{</span>alpha<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb22-37"><a href="#cb22-37" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"  No significant evidence that male professors have higher median ratings."</span>)</span>
+<span id="cb22-38"><a href="#cb22-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>======================================================================
+Mann-Whitney U Test: One-Tailed (Male &gt; Female)
+======================================================================
+Sample sizes:
+  Male (0): 12463
+  Female (1): 10818
+
+Medians:
+  Male (0): 4.0583
+  Female (1): 4.0038
+  Difference: 0.0545
+
+Test Statistics:
+  U-statistic: 69948221.50
+  p-value: 0.000000
+  Alpha level: 0.005
+
+Conclusion:
+  ✓ REJECT the null hypothesis (p = 0.000000 &lt; 0.005)
+  Male professors have significantly higher median ratings than female professors.
+======================================================================</code></pre>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="chapter-4-linear-rgression" class="level1">
+<h1>Chapter 4: Linear Rgression</h1>
+<section id="objective-and-data-prep" class="level2">
+<h2 class="anchored" data-anchor-id="objective-and-data-prep">4.1. Objective and Data Prep</h2>
+<p>This question asked us to build a linear regression model to predict the average rating of any given professor, using the tags data. Whenever a student reviews a professor on the Rate my Professor portal, they also have the ability (optional) to assign at the most three out of 20 behavioural tags to that professor. These include attributes such as ‘tough grader’, ‘respected’,‘lecture heavy’, etc.</p>
+<p>In the dataset, each tag represented a column, and the number corresponding to each professor shows how many students assigned that tag to that professor. For example, if a professor has 20 in the ‘respected’ column and 0 under ‘hilarious’, it means out of all the students that rated that professor, 20 thought the professor was respected and none found the professor funny.</p>
+<section id="numerical-to-binary-feature-transformation" class="level3">
+<h3 class="anchored" data-anchor-id="numerical-to-binary-feature-transformation">Numerical to Binary feature transformation</h3>
+<p>I converted these numerical tag counts into binary variables (0 = tag absent, 1 = tag present) due to the following reasons:</p>
+<ul>
+<li><p>First, the tag counts exhibited extreme <strong>variability and sparsity</strong>: while the latest dataset contained over 20,000 professors, the maximum number of times any tag was assigned to a single professor was less than 200, with most professors having zero or very low counts for most tags. This creates a highly <strong>skewed distribution where the numerical count may not be as meaningful as simply knowing whether a characteristic was recognized at all</strong>.</p></li>
+<li><p>Second, the underlying question we’re asking is fundamentally binary: “Is this professor perceived as having this characteristic?” rather than “How many students noted this characteristic?” A <strong>professor tagged as “tough grader” by 5 students versus 50 students may not meaningfully differ in their actual grading strictness—both have been identified as tough graders</strong> by their students. The <strong>binary representation captures this essential signal while avoiding the noise and instability</strong> introduced by highly variable counts.</p></li>
+<li><p>Finally, <strong>binary variables are more interpretable in regression: a coefficient tells us the expected change in rating when a professor has versus doesn’t have a given characteristic</strong>, which is a clearer and more actionable insight than the change per additional student mention.</p></li>
+</ul>
+<div id="66a7a26f" class="cell" data-execution_count="29">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of tag columns - using exact names from your dataframe</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>tag_columns <span class="op">=</span> [</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Tough grader'</span>,</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Good feedback'</span>,</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Respected'</span>,</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Lots to read'</span>,</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Participation matters'</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Don’t skip class or you will not pass"</span>,</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Lots of homework'</span>,</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Inspirational'</span>,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Pop quizzes!'</span>,</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Accessible'</span>,</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'So many papers'</span>,</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Clear grading'</span>,</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Hilarious'</span>,</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Test heavy'</span>,</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Graded by few things'</span>,</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Amazing lectures'</span>,</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Caring'</span>,</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Extra credit'</span>,</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Group projects'</span>,</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Lecture heavy'</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a><span class="co"># First, let's check what values are currently in these columns</span></span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Sample of current tag data:"</span>)</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>display(filtered_df[tag_columns].head(<span class="dv">15</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Sample of current tag data:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Tough grader</th>
+<th data-quarto-table-cell-role="th">Good feedback</th>
+<th data-quarto-table-cell-role="th">Respected</th>
+<th data-quarto-table-cell-role="th">Lots to read</th>
+<th data-quarto-table-cell-role="th">Participation matters</th>
+<th data-quarto-table-cell-role="th">Don’t skip class or you will not pass</th>
+<th data-quarto-table-cell-role="th">Lots of homework</th>
+<th data-quarto-table-cell-role="th">Inspirational</th>
+<th data-quarto-table-cell-role="th">Pop quizzes!</th>
+<th data-quarto-table-cell-role="th">Accessible</th>
+<th data-quarto-table-cell-role="th">So many papers</th>
+<th data-quarto-table-cell-role="th">Clear grading</th>
+<th data-quarto-table-cell-role="th">Hilarious</th>
+<th data-quarto-table-cell-role="th">Test heavy</th>
+<th data-quarto-table-cell-role="th">Graded by few things</th>
+<th data-quarto-table-cell-role="th">Amazing lectures</th>
+<th data-quarto-table-cell-role="th">Caring</th>
+<th data-quarto-table-cell-role="th">Extra credit</th>
+<th data-quarto-table-cell-role="th">Group projects</th>
+<th data-quarto-table-cell-role="th">Lecture heavy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>8</td>
+<td>13</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>7</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>4</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>6</td>
+<td>5</td>
+<td>4</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>7</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">7</th>
+<td>0</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>6</td>
+<td>0</td>
+<td>4</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">11</th>
+<td>5</td>
+<td>2</td>
+<td>3</td>
+<td>13</td>
+<td>1</td>
+<td>6</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>5</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">12</th>
+<td>2</td>
+<td>4</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>7</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>6</td>
+<td>5</td>
+<td>0</td>
+<td>2</td>
+<td>11</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">14</th>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">16</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>2</td>
+<td>6</td>
+<td>4</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="8f8ceddd" class="cell" data-execution_count="30">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> tag_columns:</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(filtered_df[col].<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>112
+171
+107
+82
+82
+110
+141
+119
+97
+63
+64
+66
+224
+81
+39
+136
+99
+128
+92
+38</code></pre>
+</div>
+</div>
+<div id="d6b1911f" class="cell" data-execution_count="31">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert tag columns to binary with new column names</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>binary_tag_columns <span class="op">=</span> []</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> tag_columns:</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> filtered_df.columns:</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        new_col_name <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_Binary"</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>        filtered_df[new_col_name] <span class="op">=</span> (filtered_df[col] <span class="op">&gt;</span> <span class="dv">0</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>        binary_tag_columns.append(new_col_name)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Warning: Column '</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">' not found"</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify the conversion</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Binary tag columns created:"</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>display(filtered_df[binary_tag_columns].head())</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Value counts for first binary tag:"</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(filtered_df[binary_tag_columns[<span class="dv">0</span>]].value_counts())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Binary tag columns created:</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Tough grader_Binary</th>
+<th data-quarto-table-cell-role="th">Good feedback_Binary</th>
+<th data-quarto-table-cell-role="th">Respected_Binary</th>
+<th data-quarto-table-cell-role="th">Lots to read_Binary</th>
+<th data-quarto-table-cell-role="th">Participation matters_Binary</th>
+<th data-quarto-table-cell-role="th">Don’t skip class or you will not pass_Binary</th>
+<th data-quarto-table-cell-role="th">Lots of homework_Binary</th>
+<th data-quarto-table-cell-role="th">Inspirational_Binary</th>
+<th data-quarto-table-cell-role="th">Pop quizzes!_Binary</th>
+<th data-quarto-table-cell-role="th">Accessible_Binary</th>
+<th data-quarto-table-cell-role="th">So many papers_Binary</th>
+<th data-quarto-table-cell-role="th">Clear grading_Binary</th>
+<th data-quarto-table-cell-role="th">Hilarious_Binary</th>
+<th data-quarto-table-cell-role="th">Test heavy_Binary</th>
+<th data-quarto-table-cell-role="th">Graded by few things_Binary</th>
+<th data-quarto-table-cell-role="th">Amazing lectures_Binary</th>
+<th data-quarto-table-cell-role="th">Caring_Binary</th>
+<th data-quarto-table-cell-role="th">Extra credit_Binary</th>
+<th data-quarto-table-cell-role="th">Group projects_Binary</th>
+<th data-quarto-table-cell-role="th">Lecture heavy_Binary</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">7</th>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Value counts for first binary tag:
+Tough grader_Binary
+1    12844
+0    10437
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="pre-regression-eda" class="level2">
+<h2 class="anchored" data-anchor-id="pre-regression-eda">4.2. Pre-regression EDA</h2>
+<p>We first examined the distribution of tags across our dataset of 23,281 professors. The proportion analysis revealed which behavioral characteristics students most frequently assign to their professors, providing context for the prevalence of each tag in our sample.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tag_prop.png" class="img-fluid figure-img"></p>
+<figcaption>PropOfTags</figcaption>
+</figure>
+</div>
+<p>To explore whether these tags are associated with differences in ratings, we compared median ratings for professors with and without each tag. We focused on the top three tags (Good feedback, Caring, Participation matters) and bottom three tags (Test heavy, So many papers, Pop quizzes!) that showed the most notable patterns in our initial analysis.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/medprofs_with_and_without_tag.png" class="img-fluid figure-img"></p>
+<figcaption>Median_profs_tags_</figcaption>
+</figure>
+</div>
+<p>The median comparison with 95% confidence intervals reveals a clear story: <strong>none of the error bars overlap</strong> between “with tag” and “without tag” groups for any of the six tags examined. This provides <strong>strong evidence that all of these tags are potentially associated with differences in professor ratings</strong>, not just artifacts of sampling variability.</p>
+<p>Notably, the <strong>top three tags (Good feedback, Caring, Participation matters) show professors with these tags consistently receiving higher median ratings</strong> than those without. Conversely, the <strong>bottom three tags (Test heavy, So many papers, Pop quizzes!) show the opposite pattern</strong>—professors with these tags receive lower median ratings. The non-overlapping confidence intervals give us confidence that these associations are real and systematic.</p>
+<p>These findings set the stage for our regression analysis, where we’ll examine how these tags predict ratings while controlling for their simultaneous effects. The strong individual associations observed here suggest these behavioral characteristics are meaningful predictors worth including in our model.</p>
+</section>
+<section id="regression-assumptions-i" class="level2">
+<h2 class="anchored" data-anchor-id="regression-assumptions-i">4.3. Regression Assumptions I</h2>
+<p>Before building our regression model to predict average ratings from behavioral tags, we address the key assumptions of linear regression. While some assumptions—linearity, independence, and homoscedasticity—require residuals and can only be validated after model fitting, we can assess multicollinearity upfront using Variance Inflation Factor (VIF).</p>
+<section id="multicollinearity-check" class="level3">
+<h3 class="anchored" data-anchor-id="multicollinearity-check">Multicollinearity Check</h3>
+<p>Multicollinearity occurs when predictor variables are highly correlated with each other, which can make coefficient estimates unstable and difficult to interpret. This is a particular concern for our tag data, as certain behavioral characteristics may naturally co-occur. For example, professors described as “Caring” might also frequently receive the “Good feedback” tag. We calculate VIF for each tag, where values above 5-10 indicate problematic collinearity that could affect our model’s reliability.</p>
+<p>•[VIF table/results would go here]</p>
+<div id="329ac587" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.outliers_influence <span class="im">import</span> variance_inflation_factor</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate VIF for each binary tag column</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>vif_data <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>vif_data[<span class="st">'Feature'</span>] <span class="op">=</span> [col.replace(<span class="st">'_Binary'</span>, <span class="st">''</span>) <span class="cf">for</span> col <span class="kw">in</span> binary_tag_columns]</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>vif_data[<span class="st">'VIF'</span>] <span class="op">=</span> [variance_inflation_factor(filtered_df[binary_tag_columns].values, i) </span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>                   <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(binary_tag_columns))]</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort by VIF value</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>vif_data <span class="op">=</span> vif_data.sort_values(<span class="st">'VIF'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Variance Inflation Factor (VIF) for Binary Tag Features"</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>display(vif_data)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Interpretation:"</span>)</span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"VIF &lt; 5: Low multicollinearity"</span>)</span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"VIF 5-10: Moderate multicollinearity"</span>)</span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"VIF &gt; 10: High multicollinearity (problematic)"</span>)</span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Flag problematic features</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a>problematic <span class="op">=</span> vif_data[vif_data[<span class="st">'VIF'</span>] <span class="op">&gt;</span> <span class="dv">10</span>]</span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(problematic) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">⚠️ </span><span class="sc">{</span><span class="bu">len</span>(problematic)<span class="sc">}</span><span class="ss"> features with VIF &gt; 10:"</span>)</span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a>    display(problematic)</span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✓ No features with problematic multicollinearity (VIF &gt; 10)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Variance Inflation Factor (VIF) for Binary Tag Features
+============================================================</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Feature</th>
+<th data-quarto-table-cell-role="th">VIF</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Good feedback</td>
+<td>4.140793</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">16</th>
+<td>Caring</td>
+<td>3.592911</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Respected</td>
+<td>3.114017</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Participation matters</td>
+<td>2.638342</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Tough grader</td>
+<td>2.626484</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">5</th>
+<td>Don’t skip class or you will not pass</td>
+<td>2.586091</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">11</th>
+<td>Clear grading</td>
+<td>2.509583</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>Amazing lectures</td>
+<td>2.274869</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">7</th>
+<td>Inspirational</td>
+<td>2.215087</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Lots to read</td>
+<td>2.147776</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>Lots of homework</td>
+<td>2.070826</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">12</th>
+<td>Hilarious</td>
+<td>2.010346</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">19</th>
+<td>Lecture heavy</td>
+<td>1.946891</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">9</th>
+<td>Accessible</td>
+<td>1.750093</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">17</th>
+<td>Extra credit</td>
+<td>1.659034</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>Test heavy</td>
+<td>1.415051</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">14</th>
+<td>Graded by few things</td>
+<td>1.324529</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">18</th>
+<td>Group projects</td>
+<td>1.301858</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>So many papers</td>
+<td>1.289192</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">8</th>
+<td>Pop quizzes!</td>
+<td>1.224686</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Interpretation:
+VIF &lt; 5: Low multicollinearity
+VIF 5-10: Moderate multicollinearity
+VIF &gt; 10: High multicollinearity (problematic)
+
+✓ No features with problematic multicollinearity (VIF &gt; 10)</code></pre>
+</div>
+</div>
+</section>
+<section id="understanding-vif" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-vif">Understanding VIF</h3>
+<p>We calculated the Variance Inflation Factor (VIF) for all 20 binary tag predictors. VIF is defined as:</p>
+<p><strong>VIF = 1 / (1 - R²)</strong></p>
+<p>where R² comes from regressing each predictor against all other predictors.</p>
+<p>Here’s what this means - For each tag (say, “Good feedback”), we run a separate regression where:</p>
+<ul>
+<li>Dependent variable: “Good feedback” tag</li>
+<li>Independent variables: All other 19 tags</li>
+</ul>
+<p>The R² from this regression tells us how well the other tags can predict/explain this particular tag. <strong>If “Good feedback” can be perfectly predicted from other tags (high R²), then it’s redundant—it’s not adding new information</strong> because the other predictors already capture what it measures.</p>
+<p>How the formula works:</p>
+<p>If R² = 0 (tag is completely independent) → VIF = 1/(1-0) = 1 (no inflation, ideal) If R² = 0.5 (moderately predictable) → VIF = 1/(1-0.5) = 2 (mild inflation) If R² = 0.9 (highly predictable) → VIF = 1/(1-0.9) = 10 (severe inflation) If R² → 1 (nearly perfect collinearity) → VIF → ∞ (catastrophic)</p>
+<ul>
+<li><strong>What “inflation” means:</strong></li>
+</ul>
+<p>VIF measures how much the <strong>variance of the coefficient estimate is inflated compared to if that predictor were completely uncorrelated with others</strong>. A VIF of 4 means the variance (and thus standard error) of that coefficient is 4 times larger than it would be if there were no collinearity. Higher variance means less precise, less stable coefficient estimates.</p>
+<ul>
+<li><strong>Why it matters:</strong></li>
+</ul>
+<p>When <strong>predictors are highly correlated</strong> (high R²), the regression struggles to disentangle their individual effects. <strong>Small changes in the data can lead to large swings in coefficient estimates</strong>. The “dependent” nature means the predictor’s effect is confounded with other predictors—we can’t confidently attribute variance in ratings to this specific tag versus the correlated tags.</p>
+<ul>
+<li><strong>Our Results:</strong></li>
+</ul>
+<p>All VIF values are below 5, with the highest being “Good feedback” (VIF = 4.14). This means even for our most correlated tag, only about 76% of its variance is explained by other tags (R² = 1 - 1/4.14 ≈ 0.76), leaving 24% unique variance. This level of collinearity is manageable and won’t destabilize our coefficient estimates. We can proceed confidently with all 20 tags as predictors.</p>
+</section>
+</section>
+<section id="regularization-and-model-fit-addressing-sparsity-and-dimensionality" class="level2">
+<h2 class="anchored" data-anchor-id="regularization-and-model-fit-addressing-sparsity-and-dimensionality">4.4. Regularization and Model Fit: Addressing Sparsity and Dimensionality</h2>
+<p>Our tag data presents two key challenges that make regularization particularly valuable:</p>
+<ul>
+<li><p><strong>First, the data is inherently sparse:</strong> students can assign a maximum of three tags per professor,that too optionally, meaning most tag variables are zeros for any given professor. Thus, some tags are likely to contributte little predictive information.</p></li>
+<li><p><strong>Second, overfitting:</strong> with 20 potential predictors relative to our outcome variable, we face a dimensionality challenge that increases the risk of overfitting (model learns noise along with any patterns). In a standard OLS regression, the model would attempt to estimate coefficients for all 20 tags simultaneously, which can lead to unstable estimates where the model captures noise and training data quirks rather than genuine predictive patterns.</p></li>
+</ul>
+<p>The combination of sparse predictors and high dimensionality creates conditions where coefficient estimates become unreliable and the model’s ability to generalize to new data deteriorates.</p>
+<p>Regularization techniques address these issues by adding a penalty term to the loss function, constraining coefficient magnitudes and improving model generalization. The two primary approaches differ in how they apply this penalty:</p>
+<ul>
+<li><p><strong>Ridge Regression (L2)</strong> adds the squared magnitude of coefficients as a penalty. This shrinks all coefficients toward zero proportionally but retains all predictors in the model. While Ridge handles multicollinearity effectively by distributing weight among correlated predictors, it doesn’t perform feature selection—all 20 tags remain in the final model, even those with minimal predictive value.</p></li>
+<li><p><strong>Lasso Regression (L1)</strong> adds the absolute magnitude of coefficients as a penalty. Critically, this can shrink coefficients exactly to zero, effectively performing automatic feature selection. This property makes Lasso particularly well-suited for sparse data and scenarios where we suspect only a subset of predictors are truly important.</p></li>
+</ul>
+<section id="our-choice-lasso" class="level3">
+<h3 class="anchored" data-anchor-id="our-choice-lasso">Our Choice: Lasso</h3>
+<p>We opt for Lasso regression for three reasons:</p>
+<ul>
+<li><p>First, given the sparse nature of our tag data, we expect that not all 20 tags will be equally predictive—some may rarely be assigned or may not meaningfully differentiate professor quality. Lasso’s ability to eliminate irrelevant predictors aligns with this reality.</p></li>
+<li><p>Second, feature selection enhances model interpretability: rather than reporting 20 small coefficients, we can identify the specific behavioral characteristics that most strongly predict ratings.</p></li>
+<li><p>Finally, our exploratory analysis showed that certain tags (like “Caring” and “Good feedback”) may have much stronger associations with ratings than others, suggesting a natural subset of important predictors that Lasso can identify.</p></li>
+</ul>
+<p>We will use cross-validation to select the optimal regularization strength (lambda/alpha parameter) that balances model fit with coefficient sparsity.</p>
+<div id="fee0c4b8" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LassoCV, Lasso</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 1: Prepare data (X = predictors, y = outcome)</span></span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> filtered_df[binary_tag_columns]</span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> filtered_df[<span class="st">'AvgRating_Bayes'</span>]</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Dataset shape: </span><span class="sc">{</span>X<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Predictors: </span><span class="sc">{</span>X<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> binary tags"</span>)</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Observations: </span><span class="sc">{</span>X<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> professors"</span>)</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 2: Split into train/test sets (80/20)</span></span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span></span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Train set: </span><span class="sc">{</span>X_train<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> professors"</span>)</span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Test set: </span><span class="sc">{</span>X_test<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> professors"</span>)</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 3: Standardize features (important for regularization)</span></span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>X_train_scaled <span class="op">=</span> scaler.fit_transform(X_train)</span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>X_test_scaled <span class="op">=</span> scaler.transform(X_test)</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✓ Features standardized (mean=0, std=1)"</span>)</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 4: Use Cross-Validation to find optimal alpha</span></span>
+<span id="cb34-39"><a href="#cb34-39" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-40"><a href="#cb34-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Finding optimal alpha using 5-fold cross-validation..."</span>)</span>
+<span id="cb34-41"><a href="#cb34-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-42"><a href="#cb34-42" aria-hidden="true" tabindex="-1"></a>lasso_cv <span class="op">=</span> LassoCV(</span>
+<span id="cb34-43"><a href="#cb34-43" aria-hidden="true" tabindex="-1"></a>    alphas<span class="op">=</span>np.logspace(<span class="op">-</span><span class="dv">4</span>, <span class="dv">1</span>, <span class="dv">100</span>),  <span class="co"># Test 100 alpha values from 0.0001 to 10</span></span>
+<span id="cb34-44"><a href="#cb34-44" aria-hidden="true" tabindex="-1"></a>    cv<span class="op">=</span><span class="dv">5</span>,                             <span class="co"># 5-fold cross-validation</span></span>
+<span id="cb34-45"><a href="#cb34-45" aria-hidden="true" tabindex="-1"></a>    random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb34-46"><a href="#cb34-46" aria-hidden="true" tabindex="-1"></a>    max_iter<span class="op">=</span><span class="dv">10000</span></span>
+<span id="cb34-47"><a href="#cb34-47" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-48"><a href="#cb34-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-49"><a href="#cb34-49" aria-hidden="true" tabindex="-1"></a>lasso_cv.fit(X_train_scaled, y_train)</span>
+<span id="cb34-50"><a href="#cb34-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-51"><a href="#cb34-51" aria-hidden="true" tabindex="-1"></a>optimal_alpha <span class="op">=</span> lasso_cv.alpha_</span>
+<span id="cb34-52"><a href="#cb34-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"✓ Optimal alpha: </span><span class="sc">{</span>optimal_alpha<span class="sc">:.6f}</span><span class="ss">"</span>)</span>
+<span id="cb34-53"><a href="#cb34-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-54"><a href="#cb34-54" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-55"><a href="#cb34-55" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 5: Fit final Lasso model with optimal alpha</span></span>
+<span id="cb34-56"><a href="#cb34-56" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-57"><a href="#cb34-57" aria-hidden="true" tabindex="-1"></a>lasso_model <span class="op">=</span> Lasso(alpha<span class="op">=</span>optimal_alpha, random_state<span class="op">=</span><span class="dv">42</span>, max_iter<span class="op">=</span><span class="dv">10000</span>)</span>
+<span id="cb34-58"><a href="#cb34-58" aria-hidden="true" tabindex="-1"></a>lasso_model.fit(X_train_scaled, y_train)</span>
+<span id="cb34-59"><a href="#cb34-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-60"><a href="#cb34-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✓ Lasso model fitted"</span>)</span>
+<span id="cb34-61"><a href="#cb34-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-62"><a href="#cb34-62" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-63"><a href="#cb34-63" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 6: Examine which features were selected</span></span>
+<span id="cb34-64"><a href="#cb34-64" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-65"><a href="#cb34-65" aria-hidden="true" tabindex="-1"></a>coefficients <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb34-66"><a href="#cb34-66" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Feature'</span>: [col.replace(<span class="st">'_Binary'</span>, <span class="st">''</span>) <span class="cf">for</span> col <span class="kw">in</span> binary_tag_columns],</span>
+<span id="cb34-67"><a href="#cb34-67" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Coefficient'</span>: lasso_model.coef_</span>
+<span id="cb34-68"><a href="#cb34-68" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb34-69"><a href="#cb34-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-70"><a href="#cb34-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate selected vs eliminated features</span></span>
+<span id="cb34-71"><a href="#cb34-71" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> coefficients[coefficients[<span class="st">'Coefficient'</span>] <span class="op">!=</span> <span class="dv">0</span>].sort_values(<span class="st">'Coefficient'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb34-72"><a href="#cb34-72" aria-hidden="true" tabindex="-1"></a>eliminated_features <span class="op">=</span> coefficients[coefficients[<span class="st">'Coefficient'</span>] <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb34-73"><a href="#cb34-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-74"><a href="#cb34-74" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span>)</span>
+<span id="cb34-75"><a href="#cb34-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"FEATURE SELECTION RESULTS"</span>)</span>
+<span id="cb34-76"><a href="#cb34-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span>)</span>
+<span id="cb34-77"><a href="#cb34-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Selected features: </span><span class="sc">{</span><span class="bu">len</span>(selected_features)<span class="sc">}</span><span class="ss"> out of </span><span class="sc">{</span><span class="bu">len</span>(binary_tag_columns)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-78"><a href="#cb34-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Eliminated features: </span><span class="sc">{</span><span class="bu">len</span>(eliminated_features)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb34-79"><a href="#cb34-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-80"><a href="#cb34-80" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- SELECTED FEATURES (Non-zero coefficients) ---"</span>)</span>
+<span id="cb34-81"><a href="#cb34-81" aria-hidden="true" tabindex="-1"></a>display(selected_features)</span>
+<span id="cb34-82"><a href="#cb34-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-83"><a href="#cb34-83" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(eliminated_features) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb34-84"><a href="#cb34-84" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">--- ELIMINATED FEATURES (Shrunk to zero) ---"</span>)</span>
+<span id="cb34-85"><a href="#cb34-85" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(eliminated_features[<span class="st">'Feature'</span>].tolist())</span>
+<span id="cb34-86"><a href="#cb34-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-87"><a href="#cb34-87" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-88"><a href="#cb34-88" aria-hidden="true" tabindex="-1"></a><span class="co"># STEP 7: Model Performance</span></span>
+<span id="cb34-89"><a href="#cb34-89" aria-hidden="true" tabindex="-1"></a><span class="co"># ============================================================</span></span>
+<span id="cb34-90"><a href="#cb34-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Predictions</span></span>
+<span id="cb34-91"><a href="#cb34-91" aria-hidden="true" tabindex="-1"></a>y_train_pred <span class="op">=</span> lasso_model.predict(X_train_scaled)</span>
+<span id="cb34-92"><a href="#cb34-92" aria-hidden="true" tabindex="-1"></a>y_test_pred <span class="op">=</span> lasso_model.predict(X_test_scaled)</span>
+<span id="cb34-93"><a href="#cb34-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-94"><a href="#cb34-94" aria-hidden="true" tabindex="-1"></a><span class="co"># Metrics</span></span>
+<span id="cb34-95"><a href="#cb34-95" aria-hidden="true" tabindex="-1"></a>train_r2 <span class="op">=</span> r2_score(y_train, y_train_pred)</span>
+<span id="cb34-96"><a href="#cb34-96" aria-hidden="true" tabindex="-1"></a>test_r2 <span class="op">=</span> r2_score(y_test, y_test_pred)</span>
+<span id="cb34-97"><a href="#cb34-97" aria-hidden="true" tabindex="-1"></a>train_rmse <span class="op">=</span> np.sqrt(mean_squared_error(y_train, y_train_pred))</span>
+<span id="cb34-98"><a href="#cb34-98" aria-hidden="true" tabindex="-1"></a>test_rmse <span class="op">=</span> np.sqrt(mean_squared_error(y_test, y_test_pred))</span>
+<span id="cb34-99"><a href="#cb34-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-100"><a href="#cb34-100" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span>)</span>
+<span id="cb34-101"><a href="#cb34-101" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MODEL PERFORMANCE"</span>)</span>
+<span id="cb34-102"><a href="#cb34-102" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">70</span>)</span>
+<span id="cb34-103"><a href="#cb34-103" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Train Set:"</span>)</span>
+<span id="cb34-104"><a href="#cb34-104" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  R²: </span><span class="sc">{</span>train_r2<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb34-105"><a href="#cb34-105" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  RMSE: </span><span class="sc">{</span>train_rmse<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb34-106"><a href="#cb34-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-107"><a href="#cb34-107" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Test Set:"</span>)</span>
+<span id="cb34-108"><a href="#cb34-108" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  R²: </span><span class="sc">{</span>test_r2<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb34-109"><a href="#cb34-109" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  RMSE: </span><span class="sc">{</span>test_rmse<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb34-110"><a href="#cb34-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-111"><a href="#cb34-111" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for overfitting</span></span>
+<span id="cb34-112"><a href="#cb34-112" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> train_r2 <span class="op">-</span> test_r2 <span class="op">&gt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb34-113"><a href="#cb34-113" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">⚠️ Warning: Possible overfitting (train R² much higher than test R²)"</span>)</span>
+<span id="cb34-114"><a href="#cb34-114" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb34-115"><a href="#cb34-115" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">✓ Model generalizes well (similar train/test performance)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dataset shape: (23281, 20)
+Predictors: 20 binary tags
+Observations: 23281 professors
+
+Train set: 18624 professors
+Test set: 4657 professors
+
+✓ Features standardized (mean=0, std=1)
+
+Finding optimal alpha using 5-fold cross-validation...
+✓ Optimal alpha: 0.000100
+
+✓ Lasso model fitted
+
+======================================================================
+FEATURE SELECTION RESULTS
+======================================================================
+
+Selected features: 20 out of 20
+Eliminated features: 0
+
+--- SELECTED FEATURES (Non-zero coefficients) ---</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Feature</th>
+<th data-quarto-table-cell-role="th">Coefficient</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Respected</td>
+<td>0.104173</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">15</th>
+<td>Amazing lectures</td>
+<td>0.097057</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Good feedback</td>
+<td>0.094429</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">16</th>
+<td>Caring</td>
+<td>0.076814</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">11</th>
+<td>Clear grading</td>
+<td>0.063631</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">12</th>
+<td>Hilarious</td>
+<td>0.057875</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">7</th>
+<td>Inspirational</td>
+<td>0.052347</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">17</th>
+<td>Extra credit</td>
+<td>0.029382</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">9</th>
+<td>Accessible</td>
+<td>0.028588</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Participation matters</td>
+<td>0.016562</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">5</th>
+<td>Don’t skip class or you will not pass</td>
+<td>-0.019217</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">8</th>
+<td>Pop quizzes!</td>
+<td>-0.023385</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">18</th>
+<td>Group projects</td>
+<td>-0.028828</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Lots to read</td>
+<td>-0.030595</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">10</th>
+<td>So many papers</td>
+<td>-0.040140</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">14</th>
+<td>Graded by few things</td>
+<td>-0.040595</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">6</th>
+<td>Lots of homework</td>
+<td>-0.049919</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">13</th>
+<td>Test heavy</td>
+<td>-0.068329</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">19</th>
+<td>Lecture heavy</td>
+<td>-0.075890</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Tough grader</td>
+<td>-0.120904</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+======================================================================
+MODEL PERFORMANCE
+======================================================================
+
+Train Set:
+  R²: 0.5954
+  RMSE: 0.3612
+
+Test Set:
+  R²: 0.5756
+  RMSE: 0.3574
+
+✓ Model generalizes well (similar train/test performance)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="lasso-regression-methodology-and-results" class="level2">
+<h2 class="anchored" data-anchor-id="lasso-regression-methodology-and-results">4.5. Lasso Regression: Methodology and Results</h2>
+<section id="how-lasso-actually-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-lasso-actually-works">How Lasso Actually Works</h3>
+<p>Now that we have the linear model fitted using lasso regularisation, let’s talk about what lasso is really doing under the hood. Regular linear regression would have computed coefficients (slopes) that minimize prediction errors on our training data. The problem? As discussed in section 4.4, it would focus so much on finding the best fitting coeffcients that it would end up <strong>learning the noise along with patterns in the training data</strong>, and therefore these coefficients would <strong>fit training data perfectly but perform poorly on new data</strong>. This is overfitting, and it happens because the model would have low bias and high variance (it’s too sensitive to noise specific to the training sample).</p>
+<p><strong>Lasso tackles this by adding a penalty term</strong> to what the model is trying to minimize: What we minimize in lasso = <strong>Prediction Errors + α × Sum of Absolute Coefficient Values</strong></p>
+<p>By <strong>penalizing large coefficients, Lasso forces them to shrink toward zero</strong>.</p>
+</section>
+<section id="why-does-this-help---smaller-coefficients-mean-smaller-slopes-which-means-the-model-responds-less-dramatically-to-changes-in-your-predictors." class="level3">
+<h3 class="anchored" data-anchor-id="why-does-this-help---smaller-coefficients-mean-smaller-slopes-which-means-the-model-responds-less-dramatically-to-changes-in-your-predictors.">Why does this help? - Smaller coefficients mean smaller slopes, which means the model responds less dramatically to changes in your predictors.</h3>
+<p>This introduces some bias—yes, <strong>we’re deliberately making the model slightly “wrong” on the training data—but in exchange, we get coefficients that are more stable and generalizable</strong>. The model becomes less reactive to noise in the training data, which lowers variance and improves performance on unseen data.</p>
+<p>The parameter <strong>alpha (α) is like a dial for controlling this bias-variance tradeoff</strong>. Crank alpha up, and you get aggressive shrinkage—many coefficients get pushed all the way to zero, giving you a very simple (high bias, low variance) model. Set alpha near zero, and you’re barely penalizing anything—you get something close to regular regression (low bias, high variance). The <strong>sweet spot is somewhere in the middle, where you’ve introduced just enough bias to stabilize coefficients without losing too much predictive power</strong>.</p>
+</section>
+<section id="finding-the-right-alpha-cross-validation" class="level3">
+<h3 class="anchored" data-anchor-id="finding-the-right-alpha-cross-validation">Finding the Right Alpha: Cross-Validation</h3>
+<p>So how do we find that sweet spot? We can’t just try different alphas and pick the one that works best on our test set—that would be cheating, because we’d be using test data to make modeling decisions. Instead, we use cross-validation on the training set only.</p>
+<p>Here’s how 5-fold cross-validation works.</p>
+<p><strong>We take the training data (our 18,624 professors) and split it into five equal chunks</strong>. Now, <strong>for each candidate alpha</strong> value you want to test, you do this dance: <strong>train the model on four chunks, validate on the fifth, and repeat five times so every chunk gets a turn being the validation set</strong>. Average those five validation errors, and you’ve got a reliable estimate of how well that alpha will perform on unseen data—without ever touching your actual test set.</p>
+<p>The <strong>alpha that gives us the lowest average validation error? That’s our winner.</strong></p>
+<p><strong>I tested 100 different alpha values ranging from 0.0001 to 10</strong>, covering the space logarithmically to explore both tiny and large regularization strengths.</p>
+<p>One important clarification: cross-validation doesn’t directly measure or optimize variance.</p>
+<p>What it does is pick the alpha that minimizes prediction error on held-out data. But by doing so, it’s implicitly finding the best bias-variance balance—the point where we’ve shrunk coefficients enough to improve generalization, but not so much that we’ve crippled the model’s ability to learn patterns.</p>
+</section>
+<section id="our-results-turns-out-we-barely-needed-regularization" class="level3">
+<h3 class="anchored" data-anchor-id="our-results-turns-out-we-barely-needed-regularization">Our Results: Turns Out We Barely Needed Regularization</h3>
+<p><strong>The cross-validation computed alpha = 0.0001 as optimal</strong> . That’s tiny. What does this mean? Essentially, our features didn’t need much policing—they were already well-behaved. With such minimal regularization, all 20 tags remained in the model with non-zero coefficients. Nothing got shrunk to zero.</p>
+<p><strong>Why such little regularization?</strong> Remember our VIF analysis? <strong>All features had VIF below 5, meaning low multicollinearity</strong>. The tags aren’t redundant; each one contributes unique information. When your predictors are relatively independent and informative, you don’t need aggressive shrinkage to stabilize the model. Lasso essentially said, “These features are fine as-is, just a tiny nudge toward zero for safety.”</p>
+</section>
+</section>
+<section id="model-performance" class="level2">
+<h2 class="anchored" data-anchor-id="model-performance">4.6. Model Performance</h2>
+<p>After training on all 18,624 professors with our optimal alpha, here’s what we obtained:</p>
+<ul>
+<li><strong>Training set: R² = 0.595, RMSE = 0.361</strong></li>
+<li><strong>Test set: R² = 0.576, RMSE = 0.357</strong></li>
+</ul>
+<p>The <strong>model explains about 58% of the variance in professor’s average ratings</strong>. This is reasonable because there is tons of other factors, such as some of the numerical features which were not investigated in this model, but could certainly contribute to predicting a professor’s average rating.</p>
+<p>More importantly, let’s look at the <strong>train-test gap: the R² only drops by 0.019, and the RMSE is nearly identical</strong>. This tells us the <strong>model isn’t overfitting—it generalizes well</strong> to new professors it’s never seen before. Our bias-variance tradeoff strategy worked.</p>
+<p>The RMSE of 0.36 means our predictions are typically off by about a third of a rating point. Given that student ratings are influenced by all sorts of unmeasured factors (mood, grade expectations, personal biases), that’s reasonable accuracy.</p>
+</section>
+<section id="what-actually-predicts-higher-ratings" class="level2">
+<h2 class="anchored" data-anchor-id="what-actually-predicts-higher-ratings">4.7. What Actually Predicts Higher Ratings?</h2>
+<p>Now for the fun part: what did we learn about which features matter? The coefficients tell us the direction and strength of each tag’s effect holding other tags cetris paribus.</p>
+<p><strong>The Big Winners (Positive Predictors):</strong></p>
+<ul>
+<li><p><strong>Respected (+0.104):</strong> This is it. This is the most important thing. If students respect you, your ratings go up more than anything else can achieve.</p></li>
+<li><p><strong>Amazing lectures (+0.097):</strong> Nearly as impactful. Students notice and reward engaging, well-delivered instruction.</p></li>
+<li><p><strong>Good feedback (+0.094):</strong> Providing helpful, constructive feedback pays dividends in how students evaluate you.</p></li>
+<li><p><strong>Caring (+0.077):</strong> Genuine care for student learning matters a lot. Students can tell when you’re invested in their success.</p></li>
+<li><p><strong>Clear grading (+0.064):</strong> Transparency and fairness in grading contribute meaningfully to positive evaluations.</p></li>
+</ul>
+<p><strong>The Big Losers (Negative Predictors):</strong></p>
+<ul>
+<li><p><strong>Tough grader (-0.121):</strong> This is the single most damaging characteristic by a significant margin. Students really penalize professors they perceive as grading harshly.</p></li>
+<li><p><strong>Lecture heavy (-0.076):</strong> Relying too heavily on lectures without variety hurts ratings.</p></li>
+<li><p><strong>Test heavy (-0.068):</strong> Courses dominated by exams get dinged.</p></li>
+<li><p><strong>Lots of homework (-0.050):</strong> Heavy homework loads lower satisfaction.</p></li>
+<li><p><strong>So many papers (-0.040):</strong> Excessive writing assignments aren’t popular either.</p></li>
+</ul>
+<section id="does-this-align-with-what-we-saw-in-the-eda" class="level3">
+<h3 class="anchored" data-anchor-id="does-this-align-with-what-we-saw-in-the-eda">Does this align with what we saw in the EDA?</h3>
+<p>Yes, quite well. Remember our exploratory analysis where we compared medians for professors with and without each tag? <strong>Good feedback, Caring, and Participation matters were our top three for median average ratings, and all remained positive predictors in the regression</strong>. Test heavy, So many papers, and Pop quizzes! were our bottom three, and they’re all still negative here.</p>
+<p>The difference? <strong>Now we know these effects hold up even when controlling for everything else simultaneously</strong>. Test heavy, for instance, turned out to be a bigger deal than we initially thought.</p>
+</section>
+<section id="what-does-mall-this-mean" class="level3">
+<h3 class="anchored" data-anchor-id="what-does-mall-this-mean">What does mall this mean?</h3>
+<p>The story is pretty clear: <strong>students reward professors who combine strong interpersonal skills (respect, caring) with pedagogical competence (great lectures, clear grading, useful feedback) and reasonable expectations</strong>. They tend to <strong>penalise heavy workloads (homework, papers, tests) and harsh grading practices.</strong></p>
+<p>Interestingly, traits like “Accessible” (+0.029) and “Inspirational” (+0.052) do help, but their effects are modest compared to the fundamentals. Being available and inspiring is nice, but it matters less than being respected, delivering quality instruction, and not burying students in work or harsh grades.</p>
+<p>Our <strong>model explains 58% of the variance in ratings using just these 20 behavioral tags.</strong> That’s substantial—it means these specific teaching behaviors genuinely shape how students perceive professor quality. <strong>The other 42%? That’s probably stuff we haven’t or cannot measure here</strong>: course difficulty, subject matter, class size, personality factors, and yes, potential biases including gender bias, which we explored earlier in our non-parametric analysis (though we ruled that out due to a very small effect size).</p>
+</section>
+</section>
+<section id="regression-assumptions-ii" class="level2">
+<h2 class="anchored" data-anchor-id="regression-assumptions-ii">4.8. Regression Assumptions II</h2>
+<p>In section 4.3, we validated one of the most crucial assumptions of Linear Regression - multicollinearity - using VIF. All our tags had VIF below 5, indicating the predictors play nicely together—they’re not redundant or highly correlated. This signalled us to actually compute our coefficients without the math breaking down, i.,e affecting the stability of our estimated coefficients.</p>
+<p>In this section we examine some of the other important assumptions which are possible to validate only after the model has been fitted as they require analysis of residuals.</p>
+<p><strong>I. Linearity and Homoscedasticity: The Must-Haves</strong></p>
+<p>After fitting the Lasso model, we looked at the residuals vs fitted values plot. This one plot lets us check two critical things:</p>
+<ul>
+<li><p><strong>Linearity:</strong> Are the residuals randomly scattered around zero with no weird curves or patterns? Yes. This means our linear model is the right fit—we’re not missing some obvious non-linear relationship.</p></li>
+<li><p><strong>Homoscedasticity:</strong> Is the spread of residuals consistent across all fitted values, or does it fan out/narrow down? An inconsistent spread would indicate that the model is better at predicting some ratings more than others.For example, are the residual errors lesser for ratings between 4 and 5 vs 1 to 3?</p></li>
+</ul>
+<p>In our case , the spread of residuals seems consistent. There is subtle funeling with narrower spread for higher ratings, but this could be because the ratings themselves were more stable to begin with, ie complied from a large number reviews. Overall, however, the noise in our data is stable—some observations aren’t way noisier than others - the Bayesian averaging in section 2 may have contributed in controlling for this - the spread in residuals would probably have been wilder otherwise.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/residual_linearity_homoskedasticity.png" class="img-fluid figure-img"></p>
+<figcaption>Residual_Plot_Test_and_Train</figcaption>
+</figure>
+</div>
+<p>Both checks passed on training and test sets. The points just scatter randomly with constant spread. That’s exactly what we want for getting good coefficient estimates.</p>
+<p><strong>II. Normality and Independence - The Nice-to-Haves</strong></p>
+<p>Technically, for the goal we started with - build a regression model that predicts professor’s average ratings using tags data, we only require the above assumptions, ie, multicollinearity, linearity, and homoskedasticity.</p>
+<p>The other two - Normality and Independence only matter if we’re doing parametric t-tests on our coefficients to say “is this coefficient significantly different from zero?” We’re not really focused on that—we’re interpreting the coefficients we got. Plus, with 23,281 observations, the Central Limit Theorem has our back. Even with non-normal residuals, if we wanted to do those tests, they’d still be approximately valid.</p>
+<p>But let’s check the other two anyway, just to be thorough.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/QQandNormalityResiduals.png" class="img-fluid figure-img"></p>
+<figcaption>Residual_QQ_plots_histogram</figcaption>
+</figure>
+</div>
+<ul>
+<li><p><strong>Normality :</strong> We looked at Q-Q plots and histograms of residuals. The center looks pretty normal, but the tails are heavier than they should be - we’ve got some extreme residuals out there. This probably happens for two reasons: (1) some outlier ratings where students went really harsh or really generous, and (2) our model doesn’t capture everything—there are factors we’re not measuring like course difficulty, subject appeal, instructor personality, or even student biases (like gender).</p></li>
+<li><p><strong>Independence:</strong> Each professor is a separate person, rated independently. No time series, no repeated measures, no clustering. One professor’s error has nothing to do with another’s. Satisfied by design.</p></li>
+</ul>
+<p>Thus, going forward, as a future scope, this model would permit the use of parametric significace testing, despite the slight deviation in tails on the Q-Q, thanks to CLT and our large smaple size.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
