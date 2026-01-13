@@ -179,7 +179,7 @@ Each professor has an average rating between 1-5, given by some 'N' number of st
 
 At first glance, professor ratings seem overly generous. Half of all professors scored above 4.0 on a 5-point scale.
 
-![RMP original ratings](../images/RMP_org_ratings.png)
+![RMP original ratings](images/RMP_org_ratings.png)
 
 Average ratings are bunched up near the top, with a long tail stretching toward the lower end - a classic left-skewed distribution.
 
