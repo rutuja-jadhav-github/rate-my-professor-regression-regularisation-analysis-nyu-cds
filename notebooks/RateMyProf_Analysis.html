@@ -178,7 +178,7 @@ window.Quarto = {
 
 
 <p><strong>Author:</strong> Rutuja Jadhav | <strong>Published:</strong> Dec 2025<br>
-🌐 <a href="https://rutujajadhavmail2.wixsite.com/rutujajadhav/projects">Website</a> | 💼 <a href="https://www.linkedin.com/in/rutuja-jadhav-b96b2aa7/">LinkedIn</a> | 🐱 <a href="https://github.com/rutuja-d-jadhav">GitHub</a></p>
+🌐 <a href="https://rutujajadhavmail2.wixsite.com/rutujajadhav/projects">Website</a> | 💼 <a href="https://www.linkedin.com/in/rutuja-jadhav-b96b2aa7/">LinkedIn</a> | 🐱 <a href="https://github.com/rutuja-jadhav-github/rate-my-professor-regression-regularisation-analysis-nyu-cds/blob/main/README.md">GitHub</a></p>
 <section id="about-this-project" class="level1">
 <h1>About this Project</h1>
 <p>This analysis was developed as part of my capstone project for the DSGA1001 course on the MS in Data Science program at NYU’s Courant Institute of Mathematics, Computing and Data Science. The original submission is a comprehensive investigation into patterns behind professor ratings on a website called Rate My Professor (where my own DS Prof happens to have a stellar rating, might I add) . We were provided a bunch of data sets pulled from the website and a set of research questions to explore.</p>
@@ -209,13 +209,13 @@ window.Quarto = {
 <p>Both the dataframes had 89,892 rows where rach row represents the data associated with a single professor.</p>
 <p>At this stage the column labels in the raw data were ambiguous so I re-lablled these based on the information provided to us in the spec sheet in class.</p>
 <p>Then I merged both the dataframes into a single object to simplify further analysis.</p>
-<div id="7fe7984c" class="cell" data-execution_count="1">
+<div id="5ed9a764" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="8f793642" class="cell" data-execution_count="2">
+<div id="8f770cbc" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the datasets</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>av_ratings_df  <span class="op">=</span> pd.read_csv(<span class="st">"../rmpCapstoneNum.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df_tags <span class="op">=</span> pd.read_csv(<span class="st">"../rmpCapstoneTags.csv"</span>)</span>
@@ -307,7 +307,7 @@ Unformatted file containing with ambiguous column names numerical data - firs co
 </div>
 </div>
 </div>
-<div id="e8b8a469" class="cell" data-execution_count="3">
+<div id="f32e68b6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_tags.shape)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_tags.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -465,7 +465,7 @@ Unformatted file containing with ambiguous column names numerical data - firs co
 </div>
 </div>
 </div>
-<div id="0de4c5be" class="cell" data-execution_count="4">
+<div id="c16d025e" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>av_ratings_df.columns <span class="op">=</span> [</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Average Rating"</span>,</span>
@@ -481,7 +481,7 @@ Unformatted file containing with ambiguous column names numerical data - firs co
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Display head only</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>av_ratings_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="5a872872" class="cell" data-execution_count="6">
+<div id="f4634e99" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge by concatenating columns</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>merged_df <span class="op">=</span> pd.concat([av_ratings_df, tags_df], axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -653,7 +653,7 @@ Unformatted file containing with ambiguous column names numerical data - firs co
 </div>
 </div>
 </div>
-<div id="7ceca260" class="cell" data-execution_count="7">
+<div id="3538d3d6" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>merged_df.describe()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
@@ -886,7 +886,7 @@ Unformatted file containing with ambiguous column names numerical data - firs co
 </div>
 </div>
 </div>
-<div id="345ea4e4" class="cell" data-execution_count="8">
+<div id="24142d2e" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>merged_df.info()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'pandas.core.frame.DataFrame'&gt;
@@ -930,7 +930,7 @@ memory usage: 19.2 MB</code></pre>
 <section id="null-values" class="level2">
 <h2 class="anchored" data-anchor-id="null-values">1.2. Null Values</h2>
 <p>Out of approx. 89000 records, around 19000 rows were dropped because they lacked the variable of interest - average ratings. I avoided imputation as the missing values were not missing at random and imputing could introduce bias.</p>
-<div id="cdc6c5fb" class="cell" data-execution_count="9">
+<div id="9f1be7de" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dont delete cell</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop rows without ratings data from merged_df (modifies in place)</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -976,7 +976,7 @@ memory usage: 19.2 MB</code></pre>
 <p>Let us check how many students typically rate each professor:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/AvNumReviews.png" class="img-fluid figure-img"></p>
+<p><img src="images/AvNumReviews.png" class="img-fluid figure-img"></p>
 <figcaption>AvNumReviews</figcaption>
 </figure>
 </div>
@@ -997,7 +997,7 @@ memory usage: 19.2 MB</code></pre>
 <p>I wondered: maybe the skew is just noise from small samples (small samples = less number of students rating a professor). What if we only look at professors with substantial rating histories?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/tripleReviewplots.png" class="img-fluid figure-img"></p>
+<p><img src="images/tripleReviewplots.png" class="img-fluid figure-img"></p>
 <figcaption>tripleReviewplots</figcaption>
 </figure>
 </div>
@@ -1017,7 +1017,9 @@ memory usage: 19.2 MB</code></pre>
 <p>We have two separate issues:</p>
 <p><strong>1. The skew</strong> - Ratings trend positive due to scale psychology, ceiling effects, and possibly mild selection bias</p>
 <p><strong>2. Unreliable sample sizes</strong> - The bulk of ratings are based on 5 reviews or fewer.</p>
-<p>We can’t fix issue #1 (it’s baked into how rating scales work). But we can fix issue #2!</p>
+<section id="we-cant-fix-issue-1-its-baked-into-how-rating-scales-work.-but-we-can-fix-issue-2" class="level3">
+<h3 class="anchored" data-anchor-id="we-cant-fix-issue-1-its-baked-into-how-rating-scales-work.-but-we-can-fix-issue-2">We can’t fix issue #1 (it’s baked into how rating scales work). But we can fix issue #2!</h3>
+</section>
 </section>
 <section id="not-all-averages-are-created-equal" class="level2">
 <h2 class="anchored" data-anchor-id="not-all-averages-are-created-equal">2.5. Not all Averages are created Equal</h2>
@@ -1026,7 +1028,7 @@ memory usage: 19.2 MB</code></pre>
 <p>A professor with a single enthusiastic freshman can have a 5.0 average. A single disgruntled student can create a 1.0. With only 3 median reviews, average ratings are unstable.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/Ratingstability.png" class="img-fluid figure-img"></p>
+<p><img src="images/Ratingstability.png" class="img-fluid figure-img"></p>
 <figcaption>RatingStability</figcaption>
 </figure>
 </div>
@@ -1065,7 +1067,7 @@ memory usage: 19.2 MB</code></pre>
 <p>Tip - think of the global mean as what we computed in high school (average price of fruits = total price of all fruits/ total fruits sold)</p>
 <p>This estimator reduces noise from small-sample averages without excluding less frequently rated professors.</p>
 <p>Quick ask - if you are aware about any other rating tranformers which would me more efficient here, pls feel free to share.</p>
-<div id="08ce8625" class="cell" data-execution_count="16">
+<div id="21518af6" class="cell" data-execution_count="16">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dont delete cell</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co">#Steps to compute Bayesian-adjusted averages</span></span>
@@ -1099,7 +1101,7 @@ Weighted global mean difficulty: 2.936
  Bayesian shrinkage was performed only for these.</code></pre>
 </div>
 </div>
-<div id="9e90c2e7" class="cell" data-execution_count="17">
+<div id="47645c45" class="cell" data-execution_count="17">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co">#dont delete cell . Bayesian-adjusted Average Rating</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Add column for Baye's adjusted Avg rating and compute it using the formula</span></span>
@@ -1226,10 +1228,10 @@ Weighted global mean difficulty: 2.936
 </section>
 <section id="what-bayesian-shrinkage-accomplished" class="level2">
 <h2 class="anchored" data-anchor-id="what-bayesian-shrinkage-accomplished">2.8. What Bayesian Shrinkage Accomplished</h2>
-<p>Note: Bayesian shrinkage was performed for profs who have atleast 3 reviews (median split by number of reviews) so as to be able to retain atelast half the data. So the profs analysed hence forth have reicevd aleast 3 reviews + adjusted with bayesian parameter.</p>
+<p>Note: Bayesian shrinkage was performed for profs who have atleast 3 reviews (median split by number of reviews) so as to be able to retain atleast half the data. So the profs analysed hence forth have received aleast 3 reviews + adjusted with bayesian parameter.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/PostBayes.png" class="img-fluid figure-img"></p>
+<p><img src="images/PostBayes.png" class="img-fluid figure-img"></p>
 <figcaption>PostBayes</figcaption>
 </figure>
 </div>
@@ -1258,7 +1260,7 @@ Weighted global mean difficulty: 2.936
 <p>Following the Bayesian shrinkage in Chp2, the latest dataframe (31,951 rows) includes all the variables required for this test, mainly - Baye’s Adjusted Average Ratings and count of Male and Female professors.</p>
 <p>However, a quick loook at the data, reveals that gender was not reported for all professors. While it was necessary to include these rows in the overall analysis of average ratings data in chp2 (we do not want to loose information about ratings when demographic information is not required), for this particular case, it was required that the analysis be performed only for records with known values for professor’s gender.</p>
 <p>Therefore, rows with unknown gender were dropped and this part of the analysis was performed on <em>23,281 records - Male (0): 53.53% and Female (1): 46.47%</em></p>
-<div id="2ee9e25d" class="cell" data-execution_count="19">
+<div id="908f0c31" class="cell" data-execution_count="19">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#drop missing gender data, retain rows where male and female values are not equal</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>filtered_df <span class="op">=</span> filtered_df[filtered_df[<span class="st">'Male'</span>] <span class="op">!=</span> filtered_df[<span class="st">'Female'</span>]]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>filtered_df.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1266,7 +1268,7 @@ Weighted global mean difficulty: 2.936
 <pre><code>(23281, 30)</code></pre>
 </div>
 </div>
-<div id="7d947234" class="cell" data-execution_count="20">
+<div id="ec6340f5" class="cell" data-execution_count="20">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#create a new feature Gender 1 = female, 0 = male</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>filtered_df[<span class="st">'Gender'</span>] <span class="op">=</span> filtered_df[<span class="st">'Female'</span>]</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>filtered_df.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1429,7 +1431,7 @@ Weighted global mean difficulty: 2.936
 </div>
 </div>
 </div>
-<div id="c654eb5c" class="cell" data-execution_count="21">
+<div id="7b93e419" class="cell" data-execution_count="21">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count of male and female</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>gender_counts <span class="op">=</span> filtered_df[<span class="st">'Gender'</span>].value_counts()</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1460,7 +1462,7 @@ Female (1): 46.47%</code></pre>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../images/MFBox.png" class="img-fluid figure-img"></p>
+<p><img src="images/MFBox.png" class="img-fluid figure-img"></p>
 <figcaption>MandFBoxPlot</figcaption>
 </figure>
 </div>
@@ -1527,7 +1529,7 @@ Female (1): 46.47%</code></pre>
 <h3 class="anchored" data-anchor-id="bottom-line">Bottom Line?</h3>
 <p><strong>Yes, male professors get statistically significantly higher ratings than female professors. But practically speaking, this difference is tiny</strong>. The effect size is very small (r = 0.0376), and we’re talking about a <strong>0.05-point gap on a 5-point scale</strong>. The confidence interval confirms this difference is real and consistently small across hypothetical replications. Both groups are rated around 4.0/5.0, which means gender really doesn’t seem to have much meaningful impact on how students evaluate their professors in this dataset.</p>
 <p><strong>Below is the code snippet for the Mann Whitney U-test. Please see the complete .ipynb file on the github repo of this project for the complete code for other statistics</strong></p>
-<div id="8e7e88d4" class="cell" data-execution_count="23">
+<div id="b39fcfb6" class="cell" data-execution_count="23">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> mannwhitneyu</span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Separate data by gender</span></span>
@@ -1607,7 +1609,7 @@ Conclusion:
 <li><p>Second, the underlying question we’re asking is fundamentally binary: “Is this professor perceived as having this characteristic?” rather than “How many students noted this characteristic?” A <strong>professor tagged as “tough grader” by 5 students versus 50 students may not meaningfully differ in their actual grading strictness—both have been identified as tough graders</strong> by their students. The <strong>binary representation captures this essential signal while avoiding the noise and instability</strong> introduced by highly variable counts.</p></li>
 <li><p>Finally, <strong>binary variables are more interpretable in regression: a coefficient tells us the expected change in rating when a professor has versus doesn’t have a given characteristic</strong>, which is a clearer and more actionable insight than the change per additional student mention.</p></li>
 </ul>
-<div id="66a7a26f" class="cell" data-execution_count="29">
+<div id="2b7bbe0f" class="cell" data-execution_count="29">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of tag columns - using exact names from your dataframe</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>tag_columns <span class="op">=</span> [</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Tough grader'</span>,</span>
@@ -2020,7 +2022,7 @@ Conclusion:
 </div>
 </div>
 </div>
-<div id="8f8ceddd" class="cell" data-execution_count="30">
+<div id="496f1a8f" class="cell" data-execution_count="30">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> tag_columns:</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(filtered_df[col].<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -2046,7 +2048,7 @@ Conclusion:
 38</code></pre>
 </div>
 </div>
-<div id="d6b1911f" class="cell" data-execution_count="31">
+<div id="97bcbcb4" class="cell" data-execution_count="31">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert tag columns to binary with new column names</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>binary_tag_columns <span class="op">=</span> []</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2256,7 +2258,7 @@ Name: count, dtype: int64</code></pre>
 <h3 class="anchored" data-anchor-id="multicollinearity-check">Multicollinearity Check</h3>
 <p>Multicollinearity occurs when predictor variables are highly correlated with each other, which can make coefficient estimates unstable and difficult to interpret. This is a particular concern for our tag data, as certain behavioral characteristics may naturally co-occur. For example, professors described as “Caring” might also frequently receive the “Good feedback” tag. We calculate VIF for each tag, where values above 5-10 indicate problematic collinearity that could affect our model’s reliability.</p>
 <p>•[VIF table/results would go here]</p>
-<div id="329ac587" class="cell" data-execution_count="35">
+<div id="779cec5d" class="cell" data-execution_count="35">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.stats.outliers_influence <span class="im">import</span> variance_inflation_factor</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -2467,7 +2469,7 @@ VIF &gt; 10: High multicollinearity (problematic)
 <li><p>Finally, our exploratory analysis showed that certain tags (like “Caring” and “Good feedback”) may have much stronger associations with ratings than others, suggesting a natural subset of important predictors that Lasso can identify.</p></li>
 </ul>
 <p>We will use cross-validation to select the optimal regularization strength (lambda/alpha parameter) that balances model fit with coefficient sparsity.</p>
-<div id="fee0c4b8" class="cell" data-execution_count="36">
+<div id="ab15957a" class="cell" data-execution_count="36">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LassoCV, Lasso</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
@@ -2808,8 +2810,8 @@ Test Set:
 <p>Yes, quite well. Remember our exploratory analysis where we compared medians for professors with and without each tag? <strong>Good feedback, Caring, and Participation matters were our top three for median average ratings, and all remained positive predictors in the regression</strong>. Test heavy, So many papers, and Pop quizzes! were our bottom three, and they’re all still negative here.</p>
 <p>The difference? <strong>Now we know these effects hold up even when controlling for everything else simultaneously</strong>. Test heavy, for instance, turned out to be a bigger deal than we initially thought.</p>
 </section>
-<section id="what-does-mall-this-mean" class="level3">
-<h3 class="anchored" data-anchor-id="what-does-mall-this-mean">What does mall this mean?</h3>
+<section id="what-does-all-this-mean" class="level3">
+<h3 class="anchored" data-anchor-id="what-does-all-this-mean">What does all this mean?</h3>
 <p>The story is pretty clear: <strong>students reward professors who combine strong interpersonal skills (respect, caring) with pedagogical competence (great lectures, clear grading, useful feedback) and reasonable expectations</strong>. They tend to <strong>penalise heavy workloads (homework, papers, tests) and harsh grading practices.</strong></p>
 <p>Interestingly, traits like “Accessible” (+0.029) and “Inspirational” (+0.052) do help, but their effects are modest compared to the fundamentals. Being available and inspiring is nice, but it matters less than being respected, delivering quality instruction, and not burying students in work or harsh grades.</p>
 <p>Our <strong>model explains 58% of the variance in ratings using just these 20 behavioral tags.</strong> That’s substantial—it means these specific teaching behaviors genuinely shape how students perceive professor quality. <strong>The other 42%? That’s probably stuff we haven’t or cannot measure here</strong>: course difficulty, subject matter, class size, personality factors, and yes, potential biases including gender bias, which we explored earlier in our non-parametric analysis (though we ruled that out due to a very small effect size).</p>

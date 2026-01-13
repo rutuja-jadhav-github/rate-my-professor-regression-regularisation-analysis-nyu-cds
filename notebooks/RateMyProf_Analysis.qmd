@@ -12,7 +12,7 @@ resources:
 ---
 
 **Author:** Rutuja Jadhav | **Published:** Dec 2025  
-🌐 [Website](https://rutujajadhavmail2.wixsite.com/rutujajadhav/projects) | 💼 [LinkedIn](https://www.linkedin.com/in/rutuja-jadhav-b96b2aa7/) | 🐱 [GitHub](https://github.com/rutuja-d-jadhav)
+🌐 [Website](https://rutujajadhavmail2.wixsite.com/rutujajadhav/projects) | 💼 [LinkedIn](https://www.linkedin.com/in/rutuja-jadhav-b96b2aa7/) | 🐱 [GitHub](https://github.com/rutuja-jadhav-github/rate-my-professor-regression-regularisation-analysis-nyu-cds/blob/main/README.md)
 
 
 # About this Project
@@ -246,7 +246,7 @@ Another afterthought: maybe only satisfied students bother rating, filtering out
 
 Let us check how many students typically rate each professor:
 
-![AvNumReviews](../images/AvNumReviews.png)
+![AvNumReviews](images/AvNumReviews.png)
 
 
 
@@ -281,7 +281,7 @@ While some form of selection or surviorship bias may exist for the popular or te
 ## 2.3. Does More Data Fix the Skew?
 I wondered: maybe the skew is just noise from small samples (small samples = less number of students rating a professor). What if we only look at professors with substantial rating histories?
 
-![tripleReviewplots](../images/tripleReviewplots.png)
+![tripleReviewplots](images/tripleReviewplots.png)
 
 Not only does more data NOT FIX the skew, in fact, it ***enhances*** it with larger samples. But something else happens:
 
@@ -471,7 +471,7 @@ Hopefully you said the second one. Sample size matters.
 
 A professor with a single enthusiastic freshman can have a 5.0 average. A single disgruntled student can create a 1.0. With only 3 median reviews, average ratings are unstable.
 
-![RatingStability](../images/Ratingstability.png)
+![RatingStability](images/Ratingstability.png)
 
 Notice how ratings jump around wildly when sample sizes are small? The variance is extreme at the low end.
 
@@ -677,7 +677,7 @@ plt.show()
 
 Note: Bayesian shrinkage was performed for profs who have atleast 3 reviews (median split by number of reviews) so as to be able to retain atleast half the data. So the profs analysed hence forth have received aleast 3 reviews + adjusted with bayesian parameter.
 
-![PostBayes](../images/PostBayes.png)
+![PostBayes](images/PostBayes.png)
 
 
 The adjustment pulled extreme ratings toward the global mean, creating more conservative and reliable estimates:
@@ -755,7 +755,7 @@ print(f"Female (1): {gender_percentages.get(1, 0):.2f}%")
 
 - **Parametric vs Non parametric tests** Box plots of the average ratings for male and female professors show that the data is **not normally distributed** for either group, following in the footsteps of the original average ratings distribution seen in Chapter 2 (notable skew and mean not equal to median). 
 
-![MandFBoxPlot](../images/MFBox.png)
+![MandFBoxPlot](images/MFBox.png)
 
 
 Regardless of the skew, our large sample size (n = 12463 M and 10818 F) could have easily generated relibale estimates of sample means for both groups to satisfy the Central Limit Theorem and justify parametric tests (CLT: with a large sample size, the sampling distribution of means approaches a normal distribution regardless of the underlyig distribution - the skew in our case).
